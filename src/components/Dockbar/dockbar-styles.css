@@ -1,0 +1,86 @@
+:root {
+    --transition-bg: background-color 150ms linear;
+    --transition-title: opacity 150ms linear;
+}
+
+.container {
+    position: fixed;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    padding: 5px 10px;
+    margin: 0;
+    list-style: none;
+
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    border: 1px solid #333;
+}
+
+.item {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 5px;
+    margin: 0;
+
+    border-radius: 15px;
+
+    transition: var(--transition-bg);
+
+    cursor: pointer;
+}
+
+.item:not(:last-child) {
+    margin-right: 10px;
+}
+
+.item:hover, .item:focus {
+    background-color: rgba(100, 100, 100, 0.3);
+
+    transition: var(--transition-bg);
+}
+
+.title {
+    position: absolute;
+    left: 50%;
+    top: -37px;
+    transform: translateX(-50%);
+
+    display: inline-flex;
+    justify-content: center;
+
+    opacity: 0;
+    transition: var(--transition-title);
+
+    width: 100%;
+
+    padding: 5px 10px;
+    margin: 0;
+
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 25px;
+    border: 1px solid #333;
+}
+
+.item:hover .title {
+    opacity: 1;
+
+    transition: var(--transition-title);
+}
+
+.icon {
+    width: 60px;
+    height: 60px;
+
+    padding: 0;
+    margin: 0;
+}
