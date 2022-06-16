@@ -1,18 +1,29 @@
 import React, { useState } from "react";
 import favorites from "./favorites";
+import Contacts from "../Contacts";
 import "./dockbar-styles.css";
 
-export default function DockbarList() {
-	const [state] = useState(favorites);
+export default function Dockbar() {
+	const [state, setState] = useState(favorites.favorites);
+	state.splice(2, 1);
+
+	console.log(`State - ${Date.now()}`, state);
+
+	const openWindow = idx => {
+		setState([...state, (state[idx].open = true)]);
+	};
 
 	return (
-		<ul className="container">
-			{state.favorites.map(f => (
-				<li className="item" key={f.id}>
-					<p className="title">{f.title}</p>
-					{f.icon}
-				</li>
-			))}
-		</ul>
+		<div>
+			{state[0].open && <Contacts />}
+			<ul className="container">
+				{state.map((f, index) => (
+					<li className="item" key={f.id} onClick={() => openWindow(index)}>
+						<p className="title">{f.title}</p>
+						{f.icon}
+					</li>
+				))}
+			</ul>
+		</div>
 	);
 }

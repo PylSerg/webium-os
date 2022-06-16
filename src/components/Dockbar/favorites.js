@@ -7,6 +7,7 @@ const favorites = [
 		icon: <FcContacts className="icon" />,
 		title: "Contacts",
 		path: "",
+		open: false,
 	},
 
 	{
@@ -14,6 +15,7 @@ const favorites = [
 		icon: <FcCalendar className="icon" />,
 		title: "Calendar",
 		path: "",
+		open: false,
 	},
 ];
 
