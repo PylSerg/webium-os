@@ -13,7 +13,7 @@ export default function Statusbar() {
 		const houres = addZero(dateNow.getHours());
 		const minutes = addZero(dateNow.getMinutes());
 
-		setClock(`${day} ${date} ${month} ${houres}:${minutes}`);
+		setClock(`${day}  ${date}  ${month}    ${houres}:${minutes}`);
 	}, 1000);
 
 	return <div className={styles.container}>{clock}</div>;

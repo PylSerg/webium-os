@@ -32,8 +32,8 @@
 }
 
 .close {
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
 
     margin-left: 10px;
 
@@ -54,7 +54,7 @@
 }
 
 #contacts {
-    bottom: 100px;
+    top: 40px;
 
     width: 500px;
     height: 80%;
@@ -62,7 +62,7 @@
 
 #calendar {
     right: 10px;
-    top: 50px;
+    top: 30px;
     left: auto;
     transform: translateX(0);
     /* top: 50%;
