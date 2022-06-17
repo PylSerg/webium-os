@@ -16,6 +16,7 @@ export default function Dockbar() {
 			minimizeWindow(idx);
 			return;
 		}
+
 		setState([...state, (state[idx].open = true)]);
 	};
 
@@ -65,7 +66,7 @@ export default function Dockbar() {
 					<li className={styles.item} key={f.id} onClick={() => openWindow(index)}>
 						<p className={styles.title}>{f.title}</p>
 						{f.icon}
-						{f.open && "open"}
+						{f.open && <div className={styles.active}></div>}
 					</li>
 				))}
 			</ul>
