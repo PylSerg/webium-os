@@ -9,9 +9,11 @@ export default function Dockbar() {
 	const [state, setState] = useState(favorites.favorites);
 	state.splice(2, 1);
 
-	console.log(`State - ${Date.now()}`, state);
-
 	const openWindow = idx => {
+		if (state[idx].open) {
+			closeWindow(idx);
+			return;
+		}
 		setState([...state, (state[idx].open = true)]);
 	};
 

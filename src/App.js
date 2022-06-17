@@ -1,9 +1,11 @@
 import React from "react";
-import Dockbar from "./components/Dockbar/Dockbar";
+import Statusbar from "./components/Statusbar";
+import Dockbar from "./components/Dockbar";
 
 export default function App() {
 	return (
 		<div>
+			<Statusbar />
 			<Dockbar />
 		</div>
 	);
