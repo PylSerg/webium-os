@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import favorites from "./favorites";
 import Contacts from "../Contacts";
-import "./dockbar-styles.css";
+import styles from "./Dockbar.module.css";
 
 export default function Dockbar() {
 	const [state, setState] = useState(favorites.favorites);
@@ -16,10 +16,10 @@ export default function Dockbar() {
 	return (
 		<div>
 			{state[0].open && <Contacts />}
-			<ul className="container">
+			<ul className={styles.container}>
 				{state.map((f, index) => (
-					<li className="item" key={f.id} onClick={() => openWindow(index)}>
-						<p className="title">{f.title}</p>
+					<li className={styles.item} key={f.id} onClick={() => openWindow(index)}>
+						<p className={styles.title}>{f.title}</p>
 						{f.icon}
 					</li>
 				))}
