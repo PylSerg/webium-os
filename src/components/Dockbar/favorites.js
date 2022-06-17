@@ -1,6 +1,7 @@
 import React from "react";
 import { FcContacts, FcCalendar } from "react-icons/fc";
 import styles from "./Dockbar.module.css";
+import windowsStyles from "./WindowsStyles.module.css";
 
 const favorites = [
 	{
@@ -9,6 +10,8 @@ const favorites = [
 		title: "Contacts",
 		path: "",
 		open: false,
+		hidden: false,
+		classlist: [windowsStyles.container],
 	},
 
 	{
@@ -17,6 +20,8 @@ const favorites = [
 		title: "Calendar",
 		path: "",
 		open: false,
+		hidden: false,
+		classlist: [windowsStyles.container],
 	},
 ];
 

@@ -7,11 +7,13 @@ import windowsStyles from "./WindowsStyles.module.css";
 
 export default function Dockbar() {
 	const [state, setState] = useState(favorites.favorites);
-	state.splice(2, 1);
+	state.splice(2, 2);
+
+	// console.log(state);
 
 	const openWindow = idx => {
 		if (state[idx].open) {
-			closeWindow(idx);
+			minimizeWindow(idx);
 			return;
 		}
 		setState([...state, (state[idx].open = true)]);
@@ -21,10 +23,19 @@ export default function Dockbar() {
 		setState([...state, (state[idx].open = false)]);
 	};
 
+	const minimizeWindow = idx => {
+		if (!state[idx].hidden) {
+			setState([...state, state[idx].classlist.push(windowsStyles.hidden), (state[idx].hidden = true)]);
+			return;
+		}
+
+		setState([...state, state[idx].classlist.pop(), (state[idx].hidden = false)]);
+	};
+
 	return (
 		<div>
 			{state[0].open && (
-				<div className={windowsStyles.container} id={windowsStyles.contacts}>
+				<div className={state[0].classlist.join(" ")} id={windowsStyles.contacts}>
 					<div className={windowsStyles.header}>
 						<button type="button" className={windowsStyles.close} onClick={() => closeWindow(0)} title="Close">
 							&times;
@@ -37,7 +48,7 @@ export default function Dockbar() {
 			)}
 
 			{state[1].open && (
-				<div className={windowsStyles.container} id={windowsStyles.calendar}>
+				<div className={state[1].classlist.join(" ")} id={windowsStyles.calendar}>
 					<div className={windowsStyles.header}>
 						<button type="button" className={windowsStyles.close} onClick={() => closeWindow(1)} title="Close">
 							&times;
@@ -54,6 +65,7 @@ export default function Dockbar() {
 					<li className={styles.item} key={f.id} onClick={() => openWindow(index)}>
 						<p className={styles.title}>{f.title}</p>
 						{f.icon}
+						{f.open && "open"}
 					</li>
 				))}
 			</ul>
