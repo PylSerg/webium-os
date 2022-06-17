@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import favorites from "./favorites";
 import Contacts from "../Contacts";
+import Calendar from "../Calendar";
 import styles from "./Dockbar.module.css";
-import stylesContacts from "../Contacts/Contacts.module.css";
+import windowsStyles from "./WindowsStyles.module.css";
 
 export default function Dockbar() {
 	const [state, setState] = useState(favorites.favorites);
@@ -21,14 +22,27 @@ export default function Dockbar() {
 	return (
 		<div>
 			{state[0].open && (
-				<div className={stylesContacts.container}>
-					<div className={stylesContacts.header}>
-						<button type="button" className={stylesContacts.close} onClick={() => closeWindow(0)} title="Close"></button>
+				<div className={windowsStyles.container} id={windowsStyles.contacts}>
+					<div className={windowsStyles.header}>
+						<button type="button" className={windowsStyles.close} onClick={() => closeWindow(0)} title="Close"></button>
+						<p className={windowsStyles.title}>{state[0].title}</p>
 					</div>
 
 					<Contacts />
 				</div>
 			)}
+
+			{state[1].open && (
+				<div className={windowsStyles.container} id={windowsStyles.calendar}>
+					<div className={windowsStyles.header}>
+						<button type="button" className={windowsStyles.close} onClick={() => closeWindow(1)} title="Close"></button>
+						<p className={windowsStyles.title}>{state[1].title}</p>
+					</div>
+
+					<Calendar />
+				</div>
+			)}
+
 			<ul className={styles.container}>
 				{state.map((f, index) => (
 					<li className={styles.item} key={f.id} onClick={() => openWindow(index)}>
