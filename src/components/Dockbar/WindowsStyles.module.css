@@ -32,9 +32,15 @@
 }
 
 .close {
+    font-size: 17px;
+    font-weight: 700;
+    color: transparent;
+
     width: 18px;
     height: 18px;
 
+    padding: 0;
+    margin: 0;
     margin-left: 10px;
 
     border: none;
@@ -43,6 +49,10 @@
     background-color: rgb(255, 72, 72);
 
     cursor: pointer;
+}
+
+.close:hover, .close:focus {
+    color: #444;
 }
 
 .title {

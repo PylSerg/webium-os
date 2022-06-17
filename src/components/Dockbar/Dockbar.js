@@ -26,7 +26,9 @@ export default function Dockbar() {
 			{state[0].open && (
 				<div className={windowsStyles.container} id={windowsStyles.contacts}>
 					<div className={windowsStyles.header}>
-						<button type="button" className={windowsStyles.close} onClick={() => closeWindow(0)} title="Close"></button>
+						<button type="button" className={windowsStyles.close} onClick={() => closeWindow(0)} title="Close">
+							&times;
+						</button>
 						<p className={windowsStyles.title}>{state[0].title}</p>
 					</div>
 
@@ -37,7 +39,9 @@ export default function Dockbar() {
 			{state[1].open && (
 				<div className={windowsStyles.container} id={windowsStyles.calendar}>
 					<div className={windowsStyles.header}>
-						<button type="button" className={windowsStyles.close} onClick={() => closeWindow(1)} title="Close"></button>
+						<button type="button" className={windowsStyles.close} onClick={() => closeWindow(1)} title="Close">
+							&times;
+						</button>
 						<p className={windowsStyles.title}>{state[1].title}</p>
 					</div>
 
