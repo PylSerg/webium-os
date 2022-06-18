@@ -75,6 +75,7 @@
     top: 40px;
 
     width: 600px;
+    max-width: 90%;
     height: 80%;
 }
 
@@ -83,8 +84,6 @@
     top: 30px;
     left: auto;
     transform: translateX(0);
-    /* top: 50%;
-    transform: translate(-50%, -50%); */
 }
 
 .hidden {
