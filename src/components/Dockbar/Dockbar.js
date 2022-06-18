@@ -1,41 +1,12 @@
-import React, { useState } from "react";
-import { favorites } from "./favorites";
-import Frames from "../Frames";
+import React from "react";
 import styles from "./Dockbar.module.css";
-import frameStyles from "../Frames/Frames.module.css";
 
-export default function Dockbar() {
-	const [state, setState] = useState(favorites);
-	state.splice(2, 2);
-
-	function openFrame(idx) {
-		if (state[idx].open) {
-			minimiseFrame(idx);
-			return;
-		}
-
-		setState([...state, (state[idx].open = true)]);
-	}
-
-	function closeFrame(idx) {
-		setState([...state, (state[idx].open = false)]);
-	}
-
-	function minimiseFrame(idx) {
-		if (!state[idx].hidden) {
-			setState([...state, state[idx].classlist.push(frameStyles.hidden), (state[idx].hidden = true)]);
-			return;
-		}
-
-		setState([...state, state[idx].classlist.pop(), (state[idx].hidden = false)]);
-	}
-
+export default function Dockbar({ state, onOpen }) {
 	return (
 		<div>
-			<Frames state={state} onClose={closeFrame} onMinimize={minimiseFrame} />
 			<ul className={styles.container}>
 				{state.map((f, index) => (
-					<li className={styles.item} key={f.id} onClick={() => openFrame(index)}>
+					<li className={styles.item} key={f.id} onClick={() => onOpen(index)}>
 						<p className={styles.title}>{f.title}</p>
 						{f.icon}
 						{f.open && <div className={styles.active}></div>}
