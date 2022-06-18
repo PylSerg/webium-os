@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import windowsStyles from "./Windows.module.css";
 
-const Windows = ({ fav, onClose, onMinimize }) => (
+const Windows = ({ state, onClose, onMinimize }) => (
 	<div>
-		{fav.map(
+		{state.map(
 			(f, index) =>
 				f.open && (
 					<div className={f.classlist.join(" ")} id={f.idList} key={f.id}>

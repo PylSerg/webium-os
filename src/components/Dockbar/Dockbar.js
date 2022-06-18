@@ -32,7 +32,7 @@ export default function Dockbar() {
 
 	return (
 		<div>
-			<Windows fav={state} onClose={closeWindow} onMinimize={minimizeWindow} />
+			<Windows state={state} onClose={closeWindow} onMinimize={minimizeWindow} />
 			<ul className={styles.container}>
 				{state.map((f, index) => (
 					<li className={styles.item} key={f.id} onClick={() => openWindow(index)}>
