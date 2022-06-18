@@ -3,7 +3,7 @@ import Contacts from "../Contacts";
 import Calendar from "../Calendar";
 import { FcContacts, FcCalendar } from "react-icons/fc";
 import styles from "./Dockbar.module.css";
-import windowsStyles from "../Windows/Windows.module.css";
+import frameStyles from "../Frames/Frames.module.css";
 
 const favorites = [
 	{
@@ -13,8 +13,8 @@ const favorites = [
 		component: <Contacts />,
 		open: false,
 		hidden: false,
-		classlist: [windowsStyles.container],
-		idList: [windowsStyles.contacts],
+		classlist: [frameStyles.container],
+		idList: [frameStyles.contacts],
 	},
 
 	{
@@ -24,8 +24,8 @@ const favorites = [
 		component: <Calendar />,
 		open: false,
 		hidden: false,
-		classlist: [windowsStyles.container],
-		idList: [windowsStyles.calendar],
+		classlist: [frameStyles.container],
+		idList: [frameStyles.calendar],
 	},
 ];
 
