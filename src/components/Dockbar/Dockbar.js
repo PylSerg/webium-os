@@ -41,6 +41,9 @@ export default function Dockbar() {
 						<button type="button" className={windowsStyles.close} onClick={() => closeWindow(0)} title="Close">
 							&times;
 						</button>
+						<button type="button" className={windowsStyles.minimise} onClick={() => minimizeWindow(0)} title="Minimise">
+							&ndash;
+						</button>
 						<p className={windowsStyles.title}>{state[0].title}</p>
 					</div>
 
@@ -53,6 +56,9 @@ export default function Dockbar() {
 					<div className={windowsStyles.header}>
 						<button type="button" className={windowsStyles.close} onClick={() => closeWindow(1)} title="Close">
 							&times;
+						</button>
+						<button type="button" className={windowsStyles.minimise} onClick={() => minimizeWindow(1)} title="Minimise">
+							&ndash;
 						</button>
 						<p className={windowsStyles.title}>{state[1].title}</p>
 					</div>

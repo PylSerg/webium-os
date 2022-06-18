@@ -33,27 +33,33 @@
     
 }
 
-.close {
-    font-size: 17px;
+.close, .minimise {
+    font-size: 15px;
     font-weight: 700;
     color: transparent;
 
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
 
     padding: 0;
     margin: 0;
-    margin-left: 10px;
+    margin-left: 8px;
 
     border: none;
     border-radius: 50px;
 
-    background-color: rgb(255, 72, 72);
-
     cursor: pointer;
 }
 
-.close:hover, .close:focus {
+.close {
+    background-color: rgb(255, 72, 72);
+}
+
+.minimise {
+    background-color: rgb(30, 196, 52);
+}
+
+.close:hover, .close:focus, .minimise:hover, .minimise:focus {
     color: #444;
 }
 
