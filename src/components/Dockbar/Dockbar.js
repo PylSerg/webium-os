@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import favorites from "./favorites";
-import Contacts from "../Contacts";
-import Calendar from "../Calendar";
+import { favorites } from "./favorites";
+import Windows from "../Windows";
 import styles from "./Dockbar.module.css";
-import windowsStyles from "./WindowsStyles.module.css";
+import windowsStyles from "../Windows/Windows.module.css";
 
 export default function Dockbar() {
-	const [state, setState] = useState(favorites.favorites);
+	const [state, setState] = useState(favorites);
 	state.splice(2, 2);
-
-	// console.log(state);
 
 	const openWindow = idx => {
 		if (state[idx].open) {
@@ -35,38 +32,7 @@ export default function Dockbar() {
 
 	return (
 		<div>
-			{state[0].open && (
-				<div className={state[0].classlist.join(" ")} id={windowsStyles.contacts}>
-					<div className={windowsStyles.header}>
-						<button type="button" className={windowsStyles.close} onClick={() => closeWindow(0)} title="Close">
-							&times;
-						</button>
-						<button type="button" className={windowsStyles.minimise} onClick={() => minimizeWindow(0)} title="Minimise">
-							&ndash;
-						</button>
-						<p className={windowsStyles.title}>{state[0].title}</p>
-					</div>
-
-					<Contacts />
-				</div>
-			)}
-
-			{state[1].open && (
-				<div className={state[1].classlist.join(" ")} id={windowsStyles.calendar}>
-					<div className={windowsStyles.header}>
-						<button type="button" className={windowsStyles.close} onClick={() => closeWindow(1)} title="Close">
-							&times;
-						</button>
-						<button type="button" className={windowsStyles.minimise} onClick={() => minimizeWindow(1)} title="Minimise">
-							&ndash;
-						</button>
-						<p className={windowsStyles.title}>{state[1].title}</p>
-					</div>
-
-					<Calendar />
-				</div>
-			)}
-
+			<Windows fav={state} onClose={closeWindow} onMinimize={minimizeWindow} />
 			<ul className={styles.container}>
 				{state.map((f, index) => (
 					<li className={styles.item} key={f.id} onClick={() => openWindow(index)}>
