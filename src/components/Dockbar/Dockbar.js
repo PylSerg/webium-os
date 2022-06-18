@@ -8,27 +8,27 @@ export default function Dockbar() {
 	const [state, setState] = useState(favorites);
 	state.splice(2, 2);
 
-	const openFrame = idx => {
+	function openFrame(idx) {
 		if (state[idx].open) {
 			minimiseFrame(idx);
 			return;
 		}
 
 		setState([...state, (state[idx].open = true)]);
-	};
+	}
 
-	const closeFrame = idx => {
+	function closeFrame(idx) {
 		setState([...state, (state[idx].open = false)]);
-	};
+	}
 
-	const minimiseFrame = idx => {
+	function minimiseFrame(idx) {
 		if (!state[idx].hidden) {
 			setState([...state, state[idx].classlist.push(frameStyles.hidden), (state[idx].hidden = true)]);
 			return;
 		}
 
 		setState([...state, state[idx].classlist.pop(), (state[idx].hidden = false)]);
-	};
+	}
 
 	return (
 		<div>
