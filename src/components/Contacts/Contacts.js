@@ -1,6 +1,13 @@
 import React from "react";
-// import styles from "./Contacts.module.css";
+import ContactsList from "./ContactsList";
+import ContactView from "./ContactView";
+import styles from "./Contacts.module.css";
 
 export default function Contacts() {
-	return <div></div>;
+	return (
+		<div className={styles.container}>
+			<ContactsList />
+			<ContactView />
+		</div>
+	);
 }
