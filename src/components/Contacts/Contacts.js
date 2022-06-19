@@ -7,7 +7,7 @@ import styles from "./Contacts.module.css";
 export default function Contacts() {
 	const [contacts, setContacts] = useState(contactsDB);
 
-	console.table(contacts);
+	// console.table(contacts);
 
 	function viewContact(contId) {
 		setContacts(prevContacts =>

@@ -1,41 +1,54 @@
 import React, { useState } from "react";
-import { favorites } from "./components/Dockbar/favorites";
+import { fav } from "./components/Dockbar/favorites";
 import Statusbar from "./components/Statusbar";
 import Frames from "./components/Frames";
 import Dockbar from "./components/Dockbar";
 import frameStyles from "./components/Frames/Frames.module.css";
 
 export default function App() {
-	const [state, setState] = useState(favorites);
-	state.splice(2, 2);
+	const [favorites, setFavorites] = useState(fav);
 
-	function openFrame(idx) {
-		if (state[idx].open) {
-			minimiseFrame(idx);
-			return;
-		}
+	function openFrame(favId) {
+		setFavorites(prevFavorites =>
+			prevFavorites.map(favorit => {
+				if (favorit.id === favId && !favorit.hidden) return { ...favorit, hidden: true, classlist: [...favorit.classlist, frameStyles.hidden] };
 
-		setState([...state, (state[idx].open = true)]);
+				if (favorit.id === favId && favorit.open && favorit.hidden) {
+					const favoritClasses = [...favorit.classlist];
+					favoritClasses.pop();
+					return { ...favorit, hidden: false, classlist: favoritClasses };
+				}
+
+				if (favorit.id === favId && !favorit.open) return { ...favorit, open: true, hidden: false };
+
+				return favorit;
+			})
+		);
 	}
 
-	function closeFrame(idx) {
-		setState([...state, (state[idx].open = false)]);
+	function closeFrame(favId) {
+		setFavorites(prevFavorites =>
+			prevFavorites.map(favorit => {
+				if (favorit.id === favId) return { ...favorit, open: false, hidden: true };
+				return favorit;
+			})
+		);
 	}
 
-	function minimiseFrame(idx) {
-		if (!state[idx].hidden) {
-			setState([...state, state[idx].classlist.push(frameStyles.hidden), (state[idx].hidden = true)]);
-			return;
-		}
-
-		setState([...state, state[idx].classlist.pop(), (state[idx].hidden = false)]);
+	function minimiseFrame(favId) {
+		setFavorites(prevFavorites =>
+			prevFavorites.map(favorit => {
+				if (favorit.id === favId) return { ...favorit, hidden: true, classlist: [...favorit.classlist, frameStyles.hidden] };
+				return favorit;
+			})
+		);
 	}
 
 	return (
 		<div>
 			<Statusbar />
-			<Frames state={state} onClose={closeFrame} onMinimize={minimiseFrame} />
-			<Dockbar state={state} onOpen={openFrame} />
+			<Frames favorites={favorites} onClose={closeFrame} onMinimize={minimiseFrame} />
+			<Dockbar favorites={favorites} onOpen={openFrame} />
 		</div>
 	);
 }

@@ -5,16 +5,15 @@ import { FcContacts, FcCalendar } from "react-icons/fc";
 import styles from "./Dockbar.module.css";
 import frameStyles from "../Frames/Frames.module.css";
 
-const favorites = [
+const fav = [
 	{
 		id: 1,
 		icon: <FcContacts className={styles.icon} />,
 		title: "Contacts",
 		component: <Contacts />,
 		open: false,
-		hidden: false,
-		classlist: [frameStyles.container],
-		idList: [frameStyles.contacts],
+		hidden: true,
+		classlist: [frameStyles.container, frameStyles.contacts],
 	},
 
 	{
@@ -23,10 +22,9 @@ const favorites = [
 		title: "Calendar",
 		component: <Calendar />,
 		open: false,
-		hidden: false,
-		classlist: [frameStyles.container],
-		idList: [frameStyles.calendar],
+		hidden: true,
+		classlist: [frameStyles.container, frameStyles.calendar],
 	},
 ];
 
-export { favorites };
+export { fav };

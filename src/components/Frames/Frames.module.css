@@ -71,7 +71,7 @@
     display: block;
 }
 
-#contacts {
+.contacts {
     top: 40px;
 
     width: 600px;
@@ -79,7 +79,7 @@
     height: 80%;
 }
 
-#calendar {
+.calendar {
     right: 10px;
     top: 30px;
     left: auto;

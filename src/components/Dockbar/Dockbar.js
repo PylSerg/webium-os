@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./Dockbar.module.css";
 
-export default function Dockbar({ state, onOpen }) {
+export default function Dockbar({ favorites, onOpen }) {
 	return (
 		<div>
 			<ul className={styles.container}>
-				{state.map((f, index) => (
-					<li className={styles.item} key={f.id} onClick={() => onOpen(index)}>
+				{favorites.map(f => (
+					<li className={styles.item} key={f.id} onClick={() => onOpen(f.id)}>
 						<p className={styles.title}>{f.title}</p>
 						{f.icon}
 						{f.open && <div className={styles.active}></div>}
