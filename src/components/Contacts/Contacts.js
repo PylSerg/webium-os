@@ -12,7 +12,9 @@ export default function Contacts() {
 	function viewContact(contId) {
 		setContacts(prevContacts =>
 			prevContacts.map(contact => {
+				if (contact.view && contact.id !== contId) return { ...contact, view: false };
 				if (contact.id === contId) return { ...contact, view: true };
+
 				return contact;
 			})
 		);

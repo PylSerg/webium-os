@@ -32,6 +32,39 @@
 }
 
 .contact {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+
     width: 60%;
     height: 100%;
+}
+
+.iconUserBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 200px;
+    height: 200px;
+
+    padding: 0;
+    margin: 0 auto;
+
+    background-color: #eee;
+    border-radius: 200px;
+}
+
+.iconUser {
+    fill: #aaa;
+
+    width: 80%;
+    height: 80%;
+
+    padding: 0;
+    margin: 0;
+}
+
+.userTitle {
+    text-align: center;
 }
