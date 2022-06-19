@@ -1,8 +1,13 @@
 import React from "react";
 import { AiOutlineUser } from "react-icons/ai";
+import { RiPhoneFill, RiSkypeFill, RiMailFill, RiPhoneLine, RiSkypeLine, RiMailLine, RiCommunityLine, RiFileTextLine } from "react-icons/ri";
 import styles from "./Contacts.module.css";
 
-export default function ContactsList({ contacts }) {
+export default function ContactView({ contacts }) {
+	const forTel = "tel:";
+	const forSkype = "skype:";
+	const forMail = "mailto:";
+
 	return (
 		<div className={styles.contact}>
 			{contacts.map(
@@ -16,14 +21,69 @@ export default function ContactsList({ contacts }) {
 								{contact.name} {contact.lastName}
 							</h2>
 
-							<div>
-								<h4>Contact info</h4>
+							<ul className={styles.connectionBar}>
+								{contact.tel && (
+									<li>
+										<a href={[forTel, contact.tel].join("")} className={styles.connectionElement}>
+											<RiPhoneFill className={styles.connectionIcon} />
+											<span>Call</span>
+										</a>
+									</li>
+								)}
 
-								<ul>
-									{contact.tel && <li>{contact.tel}</li>}
-									{contact.email && <li>{contact.email}</li>}
-									{contact.address && <li>{contact.address}</li>}
-									{contact.comment && <li>{contact.comment}</li>}
+								{contact.skype && (
+									<li>
+										<a href={[forSkype, contact.skype].join("")} className={styles.connectionElement}>
+											<RiSkypeFill className={styles.connectionIcon} />
+											<span>Skype</span>
+										</a>
+									</li>
+								)}
+
+								{contact.email && (
+									<li>
+										<a href={[forMail, contact.email].join("")} className={styles.connectionElement}>
+											<RiMailFill className={styles.connectionIcon} />
+											<span>Email</span>
+										</a>
+									</li>
+								)}
+							</ul>
+
+							<div className={styles.contactInfo}>
+								<h4 className={styles.infoTitle}>Contact info</h4>
+
+								<ul className={styles.infoList}>
+									{contact.tel && (
+										<li className={styles.infoItem}>
+											<RiPhoneLine className={styles.infoIcon} />
+											{contact.tel}
+										</li>
+									)}
+									{contact.skype && (
+										<li className={styles.infoItem}>
+											<RiSkypeLine className={styles.infoIcon} />
+											{contact.skype}
+										</li>
+									)}
+									{contact.email && (
+										<li className={styles.infoItem}>
+											<RiMailLine className={styles.infoIcon} />
+											{contact.email}
+										</li>
+									)}
+									{contact.address && (
+										<li className={styles.infoItem}>
+											<RiCommunityLine className={styles.infoIcon} />
+											{contact.address}
+										</li>
+									)}
+									{contact.comment && (
+										<li className={[styles.infoItem, styles.comment].join(" ")}>
+											<RiFileTextLine className={styles.infoIcon} />
+											{contact.comment}
+										</li>
+									)}
 								</ul>
 							</div>
 						</div>

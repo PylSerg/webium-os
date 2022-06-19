@@ -31,11 +31,17 @@
     border-bottom: 1px solid #ddd;
 }
 
-.contact {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
+.item:hover, .item:focus {
+    color: #fff;
+    background-color: #2b85ec;
+}
 
+.activ {
+    color: #fff;
+    background-color: #2b85ec;
+}
+
+.contact {
     width: 60%;
     height: 100%;
 }
@@ -45,11 +51,12 @@
     justify-content: center;
     align-items: center;
 
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
 
     padding: 0;
     margin: 0 auto;
+    margin-top: 20px;
 
     background-color: #eee;
     border-radius: 200px;
@@ -67,4 +74,99 @@
 
 .userTitle {
     text-align: center;
+}
+
+.connectionBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width: 95%;
+
+    padding: 0;
+    margin: 0 auto;
+    margin-bottom: 10px;
+
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+
+    list-style: none;
+}
+
+.connectionBar li:not(:last-child) {
+    margin-right: 15%;
+}
+
+.connectionElement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    color: #444;
+    font-size: 14px;
+
+    padding: 5px;
+
+    text-decoration: none;
+}
+
+.connectionElement:hover, 
+.connectionElement:focus {
+    color: #2b85ec;
+}
+
+.connectionIcon {
+    width: 22px;
+    height: 22px;
+
+    margin-bottom: 3px;
+}
+
+.contactInfo {
+    width: 90%;
+
+    padding: 10px;
+    margin: 0 auto;
+
+    background-color: #eee;
+    border-radius: 10px;
+}
+
+.infoTitle {
+    padding: 0;
+    margin: 0;
+}
+
+.infoList {
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+
+    list-style: none;
+}
+
+.infoItem {
+    display: flex;
+    align-items: center;
+
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.infoIcon {
+    fill: #555;
+
+    width: 22px;
+    height: 22px;
+
+    margin-right: 10px;
+}
+
+.comment {
+    font-style: italic;
 }

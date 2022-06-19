@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Contacts.module.css";
 
-export default function ContactView({ contacts, viewContact }) {
+export default function ContactsList({ contacts, viewContact }) {
 	return (
 		<ul className={styles.list}>
 			{contacts.map(contact => (
