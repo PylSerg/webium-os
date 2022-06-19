@@ -1,0 +1,31 @@
+[
+	{
+		"id": 1,
+		"name": "Boris",
+		"lastName": "Johnson",
+		"tel": "+440368796245",
+		"email": "boris-cool@gmail.com",
+		"comment": "",
+		"view": false
+	},
+
+	{
+		"id": 2,
+		"name": "Emmanuel",
+		"lastName": "Macron",
+		"tel": "+330548349675",
+		"email": "macronni@gmail.com",
+		"comment": "",
+		"view": false
+	},
+
+	{
+		"id": 3,
+		"name": "Olaf",
+		"lastName": "Scholz",
+		"tel": "+491256849301",
+		"email": "scholzgen@gmail.com",
+		"comment": "",
+		"view": false
+	}
+]
