@@ -19,6 +19,8 @@
     padding: 0;
     margin: 0;
 
+    overflow-y: auto;
+
     cursor: pointer;
 
     list-style: none;
@@ -44,6 +46,8 @@
 .contact {
     width: 60%;
     height: 100%;
+
+    overflow-y: auto;
 }
 
 .iconUserBox {
@@ -216,3 +220,77 @@
     fill: #fff;
 }
 
+.modalContainer {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    display: block;
+
+    width: 70%;
+
+    padding: 0px;
+    margin: 0;
+
+    background-color: #fff;
+    border: 2px solid #555;
+    border-radius: 10px;
+
+    box-shadow: 0 0 10px 1px #333;
+
+    overflow: hidden;
+}
+
+.modalHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    height: 30px;
+
+    padding: 0;
+    margin: 0;
+
+    color: #ddd;
+    font-weight: 700;
+
+    background-color: #555;
+}
+
+.modalText {
+    text-align: center;
+
+    padding: 20px;
+}
+
+.cancelButton, .deleteButton {
+    font-size: 16px;
+
+    width: 50%;
+
+    padding: 10px 0;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+.cancelButton {
+    background-color: #ecebeb;
+}
+
+.cancelButton:hover, .cancelButton:focus {
+    background-color: #cacaca;
+}
+
+.deleteButton {
+    color: #fff;
+    background-color: #e21313;
+}
+
+.deleteButton:hover,
+.deleteButton:focus {
+    background-color: #e93535;
+}
