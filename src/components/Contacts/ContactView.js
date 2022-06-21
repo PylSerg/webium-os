@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineUser } from "react-icons/ai";
-import { RiPhoneFill, RiSkypeFill, RiMailFill, RiPhoneLine, RiSkypeLine, RiMailLine, RiCommunityLine, RiFileTextLine } from "react-icons/ri";
+import { RiPhoneFill, RiSkypeFill, RiMailFill, RiPhoneLine, RiSkypeLine, RiMailLine, RiCommunityLine, RiFileTextLine, RiEditLine, RiDeleteBinLine } from "react-icons/ri";
 import styles from "./Contacts.module.css";
 
 export default function ContactView({ contacts }) {
@@ -85,6 +85,16 @@ export default function ContactView({ contacts }) {
 										</li>
 									)}
 								</ul>
+							</div>
+
+							<div className={styles.control}>
+								<button type="button" className={styles.edit} title="Edit">
+									<RiEditLine className={styles.editIcon} />
+								</button>
+
+								<button type="button" className={styles.delete} title="Delete">
+									<RiDeleteBinLine className={styles.deleteIcon} />
+								</button>
 							</div>
 						</div>
 					)

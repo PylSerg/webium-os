@@ -59,7 +59,7 @@
     margin-top: 20px;
 
     background-color: #eee;
-    border-radius: 200px;
+    border-radius: 100%;
 }
 
 .iconUser {
@@ -170,3 +170,49 @@
 .comment {
     font-style: italic;
 }
+
+.control {
+    position: fixed;
+    top: 35px;
+    right: 5px;
+}
+
+.delete, .edit {
+    width: 32px;
+    height: 32px;
+
+    padding: 5px;
+    margin-left: 10px;
+
+    background-color: #fff;
+    border-radius: 100%;
+    border: none;
+
+    box-shadow: 0 0 5px 1px #888;
+
+    cursor: pointer;
+}
+
+.deleteIcon, .editIcon {
+    fill: #2b85ec;
+
+    width: 100%;
+    height: 100%;
+}
+
+.edit:hover,
+.edit:focus {
+    background-color: #1aa31a;
+}
+
+.delete:hover, .delete:focus {
+    background-color: #ec2b2b;
+}
+
+.edit:hover .editIcon,
+.edit:focus .editIcon,
+.delete:hover .deleteIcon,
+.delete:focus .deleteIcon {
+    fill: #fff;
+}
+
