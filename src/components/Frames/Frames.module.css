@@ -1,7 +1,9 @@
 .container {
     position: fixed;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(1);
+
+    transition: all 250ms linear;
 
     display: block;
 
@@ -87,5 +89,7 @@
 }
 
 .hidden {
-    display: none;
+    transform: translate(-50%, 100vh) scale(0);
+
+    transition: all 250ms linear;
 }
