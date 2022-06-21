@@ -5,8 +5,16 @@ export default function ContactsList({ contacts, viewContact }) {
 	return (
 		<ul className={styles.list}>
 			{contacts.map(contact => (
-				<li className={styles.item} key={contact.id} onClick={() => viewContact(contact.id)}>
-					{contact.name} {contact.lastName}
+				<li key={contact.id}>
+					{contact.view ? (
+						<div className={[styles.item, styles.active].join(" ")} onClick={() => viewContact(contact.id)}>
+							{contact.name} {contact.lastName}
+						</div>
+					) : (
+						<div className={styles.item} onClick={() => viewContact(contact.id)}>
+							{contact.name} {contact.lastName}
+						</div>
+					)}
 				</li>
 			))}
 		</ul>

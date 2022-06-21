@@ -33,10 +33,10 @@
 
 .item:hover, .item:focus {
     color: #fff;
-    background-color: #2b85ec;
+    background-color: #48709e;
 }
 
-.activ {
+.active {
     color: #fff;
     background-color: #2b85ec;
 }
