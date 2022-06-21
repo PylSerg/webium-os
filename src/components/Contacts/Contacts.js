@@ -7,6 +7,10 @@ import styles from "./Contacts.module.css";
 export default function Contacts() {
 	const [contacts, setContacts] = useState(contactsDB);
 
+	function deleteContact(contactId) {
+		setContacts(prevContacts => prevContacts.filter(contact => contact.id !== contactId));
+	}
+
 	function viewContact(contId) {
 		setContacts(prevContacts =>
 			prevContacts.map(contact => {
@@ -23,7 +27,7 @@ export default function Contacts() {
 			<div className={styles.sidebar}>
 				<ContactsList contacts={contacts} viewContact={viewContact} />
 			</div>
-			<ContactView contacts={contacts} />
+			<ContactView contacts={contacts} onDelete={deleteContact} />
 		</div>
 	);
 }

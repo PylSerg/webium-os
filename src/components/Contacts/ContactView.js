@@ -3,7 +3,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { RiPhoneFill, RiSkypeFill, RiMailFill, RiPhoneLine, RiSkypeLine, RiMailLine, RiCommunityLine, RiFileTextLine, RiEditLine, RiDeleteBinLine } from "react-icons/ri";
 import styles from "./Contacts.module.css";
 
-export default function ContactView({ contacts }) {
+export default function ContactView({ contacts, onDelete }) {
 	const forTel = "tel:";
 	const forSkype = "skype:";
 	const forMail = "mailto:";
@@ -92,7 +92,7 @@ export default function ContactView({ contacts }) {
 									<RiEditLine className={styles.editIcon} />
 								</button>
 
-								<button type="button" className={styles.delete} title="Delete">
+								<button type="button" className={styles.delete} onClick={() => onDelete(contact.id)} title="Delete">
 									<RiDeleteBinLine className={styles.deleteIcon} />
 								</button>
 							</div>
