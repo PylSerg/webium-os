@@ -6,6 +6,7 @@ import styles from "./Contacts.module.css";
 
 export default function Contacts() {
 	const [contacts, setContacts] = useState(contactsDB);
+	const [filter, setFilter] = useState({ value: "" });
 
 	function deleteContact(contactId) {
 		setContacts(prevContacts => prevContacts.filter(contact => contact.id !== contactId));
@@ -22,10 +23,26 @@ export default function Contacts() {
 		);
 	}
 
+	function filterContacts(e) {
+		setFilter({ value: e.currentTarget.value });
+	}
+
+	const normalizedFilter = filter.value.toLocaleLowerCase();
+	const visibleContacts = contacts.filter(
+		contact =>
+			contact.name.toLocaleLowerCase().includes(normalizedFilter) ||
+			contact.lastName.toLocaleLowerCase().includes(normalizedFilter) ||
+			contact.tel.toLocaleLowerCase().includes(normalizedFilter) ||
+			contact.skype.toLocaleLowerCase().includes(normalizedFilter) ||
+			contact.email.toLocaleLowerCase().includes(normalizedFilter) ||
+			contact.address.toLocaleLowerCase().includes(normalizedFilter) ||
+			contact.comment.toLocaleLowerCase().includes(normalizedFilter)
+	);
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.sidebar}>
-				<ContactsList contacts={contacts} viewContact={viewContact} />
+				<ContactsList contacts={visibleContacts} filter={filter} viewContact={viewContact} filterContacts={filterContacts} />
 			</div>
 			<ContactView contacts={contacts} onDelete={deleteContact} />
 		</div>
