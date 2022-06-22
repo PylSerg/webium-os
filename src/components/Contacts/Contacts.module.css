@@ -43,6 +43,45 @@
     background-color: #2b85ec;
 }
 
+.searchFormContainer {
+    position: relative;
+
+    padding: 10px;
+    margin: 0;
+
+    border-bottom: 1px solid #ddd;
+}
+
+.searchFormInput {
+    color: #333;
+    font-size: 16px;
+
+    width: calc(100% - 40px);
+
+    padding: 5px 30px 5px 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    outline: none;
+}
+
+.searchClear {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+
+    fill: #aaa;
+
+    width: 20px;
+    height: 20px;
+
+    padding: 5px 10px 5px 5px;
+    margin: 0;
+
+    cursor: pointer;
+}
+
 .searchTip {
     color: #888;
     font-style: italic;

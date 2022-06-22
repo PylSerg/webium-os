@@ -1,10 +1,14 @@
 import React from "react";
+import { RiDeleteBack2Line } from "react-icons/ri";
 import styles from "./Contacts.module.css";
 
 export default function ContactsFilter({ filter, filterContacts }) {
 	return (
-		<label>
-			<input type="text" value={filter.value} onChange={filterContacts} placeholder="Search..." />
-		</label>
+		<div className={styles.searchFormContainer}>
+			<label>
+				<RiDeleteBack2Line className={styles.searchClear} />
+				<input className={styles.searchFormInput} type="text" value={filter.value} onChange={filterContacts} placeholder="Search..." />
+			</label>
+		</div>
 	);
 }
