@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ContactsFilter from "./ContactsFilter";
 import ContactsList from "./ContactsList";
 import ContactView from "./ContactView";
 import contactsDB from "./contactsDB.json";
@@ -43,6 +44,7 @@ export default function Contacts() {
 	return (
 		<div className={styles.container}>
 			<div className={styles.sidebar}>
+				<ContactsFilter filter={filter} filterContacts={filterContacts} />
 				<ContactsList contacts={visibleContacts} filter={filter} normalizedFilter={normalizedFilter} viewContact={viewContact} filterContacts={filterContacts} />
 			</div>
 			<ContactView contacts={contacts} onDelete={deleteContact} />
