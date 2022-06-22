@@ -28,21 +28,22 @@ export default function Contacts() {
 	}
 
 	const normalizedFilter = filter.value.toLocaleLowerCase();
-	const visibleContacts = contacts.filter(
-		contact =>
-			contact.name.toLocaleLowerCase().includes(normalizedFilter) ||
-			contact.lastName.toLocaleLowerCase().includes(normalizedFilter) ||
-			contact.tel.toLocaleLowerCase().includes(normalizedFilter) ||
-			contact.skype.toLocaleLowerCase().includes(normalizedFilter) ||
-			contact.email.toLocaleLowerCase().includes(normalizedFilter) ||
-			contact.address.toLocaleLowerCase().includes(normalizedFilter) ||
-			contact.comment.toLocaleLowerCase().includes(normalizedFilter)
-	);
+	const visibleContacts = contacts
+		.filter(
+			contact =>
+				contact.name.toLocaleLowerCase().includes(normalizedFilter) ||
+				contact.lastName.toLocaleLowerCase().includes(normalizedFilter) ||
+				contact.tel.includes(normalizedFilter) ||
+				contact.skype.toLocaleLowerCase().includes(normalizedFilter) ||
+				contact.email.toLocaleLowerCase().split("@")[0].includes(normalizedFilter) ||
+				contact.address.toLocaleLowerCase().includes(normalizedFilter)
+		)
+		.sort((a, b) => (a.name > b.name ? 1 : -1));
 
 	return (
 		<div className={styles.container}>
 			<div className={styles.sidebar}>
-				<ContactsList contacts={visibleContacts} filter={filter} viewContact={viewContact} filterContacts={filterContacts} />
+				<ContactsList contacts={visibleContacts} filter={filter} normalizedFilter={normalizedFilter} viewContact={viewContact} filterContacts={filterContacts} />
 			</div>
 			<ContactView contacts={contacts} onDelete={deleteContact} />
 		</div>

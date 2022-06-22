@@ -43,6 +43,20 @@
     background-color: #2b85ec;
 }
 
+.searchTip {
+    color: #888;
+    font-style: italic;
+
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+
+}
+
+.active .searchTip {
+    color: #ddd;
+}
+
 .contact {
     width: 60%;
     height: 100%;
