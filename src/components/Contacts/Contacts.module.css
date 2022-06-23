@@ -16,6 +16,8 @@
 }
 
 .list {
+    height: calc(100% - 115px);
+
     padding: 0;
     margin: 0;
 
@@ -353,6 +355,27 @@
 .deleteButton:hover,
 .deleteButton:focus {
     background-color: #e93535;
+}
+
+.addbutton {
+    color: #888;
+    font-size: 14px;
+    text-align: left;
+
+    width: 100%;
+
+    padding: 7px;
+    margin: 0;
+
+    background-color: #fff;
+    border: none;
+    border-bottom: 1px solid #ddd;
+
+    cursor: pointer;
+}
+
+.addbutton:hover, .addbutton:focus {
+    color: #2b85ec;
 }
 
 .createContainer {

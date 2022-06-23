@@ -57,6 +57,7 @@ export default function Contacts() {
 
 	function addContact(newContact) {
 		setContacts([...contacts, newContact]);
+		viewContact(newContact.id);
 	}
 
 	return (
