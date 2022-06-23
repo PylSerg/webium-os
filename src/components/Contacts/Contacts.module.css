@@ -82,6 +82,11 @@
     cursor: pointer;
 }
 
+.searchClear:hover, 
+.searchClear:focus {
+    fill: #2b85ec;
+}
+
 .searchTip {
     color: #888;
     font-style: italic;

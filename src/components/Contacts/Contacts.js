@@ -41,10 +41,14 @@ export default function Contacts() {
 		)
 		.sort((a, b) => (a.name > b.name ? 1 : -1));
 
+	function clearFilter() {
+		setFilter({ value: "" });
+	}
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.sidebar}>
-				<ContactsFilter filter={filter} filterContacts={filterContacts} />
+				<ContactsFilter filter={filter} filterContacts={filterContacts} clearFilter={clearFilter} />
 				<ContactsList contacts={visibleContacts} filter={filter} normalizedFilter={normalizedFilter} viewContact={viewContact} filterContacts={filterContacts} />
 			</div>
 			<ContactView contacts={contacts} onDelete={deleteContact} />
