@@ -6,8 +6,14 @@ import ContactView from "./ContactView";
 import contactsDB from "./contactsDB.json";
 import styles from "./Contacts.module.css";
 
+function defaultContacts() {
+	if (!localStorage.getItem("contacts")) return contactsDB;
+
+	return JSON.parse(localStorage.getItem("contacts"));
+}
+
 export default function Contacts() {
-	const [contacts, setContacts] = useState(contactsDB);
+	const [contacts, setContacts] = useState(() => defaultContacts());
 	const [filter, setFilter] = useState({ value: "" });
 	const [creator, setCreator] = useState({ visible: false });
 
@@ -59,6 +65,12 @@ export default function Contacts() {
 		setContacts([...contacts, newContact]);
 		viewContact(newContact.id);
 	}
+
+	function refreshLocalStorage() {
+		localStorage.setItem("contacts", JSON.stringify(contacts));
+	}
+
+	refreshLocalStorage();
 
 	return (
 		<div className={styles.container}>
