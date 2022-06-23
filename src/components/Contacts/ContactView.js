@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import DeleteModal from "./ContactsDeleteModal";
+import DeleteContact from "./ContactsDelete";
+import CreateContact from "./ContactsCreate";
 import { AiOutlineUser } from "react-icons/ai";
 import { RiPhoneFill, RiSkypeFill, RiMailFill, RiPhoneLine, RiSkypeLine, RiMailLine, RiCommunityLine, RiFileTextLine, RiEditLine, RiDeleteBinLine } from "react-icons/ri";
 import styles from "./Contacts.module.css";
 
-export default function ContactView({ contacts, onDelete }) {
+export default function ContactView({ contacts, creator, addContact, onDelete, closeCreator }) {
 	const forTel = "tel:";
 	const forSkype = "skype:";
 	const forMail = "mailto:";
@@ -108,10 +109,12 @@ export default function ContactView({ contacts, onDelete }) {
 								</button>
 							</div>
 
-							{modalDelete.open && <DeleteModal contact={contact} onDelete={onDelete} onClose={closeModal} />}
+							{modalDelete.open && <DeleteContact contact={contact} onDelete={onDelete} onClose={closeModal} />}
 						</div>
 					)
 			)}
+
+			{creator.visible && <CreateContact addContact={addContact} closeCreator={closeCreator} />}
 		</div>
 	);
 }

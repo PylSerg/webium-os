@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Contacts.module.css";
 
-export default function DeleteModal({ contact, onClose, onDelete }) {
+export default function DeleteContact({ contact, onClose, onDelete }) {
 	function deleteAndClose(contId) {
 		onDelete(contId);
 		onClose();

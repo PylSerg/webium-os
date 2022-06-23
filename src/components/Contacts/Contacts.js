@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ContactsFilter from "./ContactsFilter";
+import AddContact from "./ContactsAdd";
 import ContactsList from "./ContactsList";
 import ContactView from "./ContactView";
 import contactsDB from "./contactsDB.json";
@@ -8,6 +9,7 @@ import styles from "./Contacts.module.css";
 export default function Contacts() {
 	const [contacts, setContacts] = useState(contactsDB);
 	const [filter, setFilter] = useState({ value: "" });
+	const [creator, setCreator] = useState({ visible: false });
 
 	function deleteContact(contactId) {
 		setContacts(prevContacts => prevContacts.filter(contact => contact.id !== contactId));
@@ -45,13 +47,26 @@ export default function Contacts() {
 		setFilter({ value: "" });
 	}
 
+	function openCreator() {
+		setCreator({ visible: true });
+	}
+
+	function closeCreator() {
+		setCreator({ visible: false });
+	}
+
+	function addContact(newContact) {
+		setContacts([...contacts, newContact]);
+	}
+
 	return (
 		<div className={styles.container}>
 			<div className={styles.sidebar}>
 				<ContactsFilter filter={filter} filterContacts={filterContacts} clearFilter={clearFilter} />
+				<AddContact openCreator={openCreator} />
 				<ContactsList contacts={visibleContacts} filter={filter} normalizedFilter={normalizedFilter} viewContact={viewContact} filterContacts={filterContacts} />
 			</div>
-			<ContactView contacts={contacts} onDelete={deleteContact} />
+			<ContactView contacts={contacts} creator={creator} addContact={addContact} onDelete={deleteContact} closeCreator={closeCreator} />
 		</div>
 	);
 }
