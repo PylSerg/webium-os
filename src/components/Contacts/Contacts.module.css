@@ -383,8 +383,77 @@
     top: 0;
     left: 0;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
     width: 100%;
-    height: 100%;
+    height: calc(100% - 30px);
 
     background-color: #fff;
+}
+
+.createContainer label {
+    color: #666;
+    font-style: italic;
+
+    width: 80%;
+}
+
+.createContainer input, textarea {
+    color: #444;
+    font-size: 16px;
+
+    width: 100%;
+
+    padding: 5px 5px 0 5px;
+
+    border: none;
+    border-bottom: 1px solid #ddd;
+
+    outline: none;
+
+    resize: none;
+}
+
+.createButtons {
+    display: flex;
+    justify-content: center;
+
+    width: 80%;
+}
+
+.createCancelButton, .createSaveButton {
+    color: #fff;
+    font-size: 16px;
+
+    width: 100px;
+
+    padding: 5px 0;
+
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.createCancelButton {
+    margin-right: 20px;
+
+    background-color: #e21313;
+}
+
+.createCancelButton:hover, 
+.createCancelButton:focus {
+    background-color: #eb4c4c;
+}
+
+.createSaveButton {
+    background-color: #2d9e29;
+}
+
+.createSaveButton:hover,
+.createSaveButton:focus {
+    background-color: #70d36c;
 }

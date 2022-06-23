@@ -30,43 +30,50 @@ export default function CreateContact({ addContact, closeCreator }) {
 	}
 
 	return (
-		<div className={styles.createContainer}>
-			<form onSubmit={submitForm}>
-				<label>
-					Name: <input type="text" name="name" value={createForm.value} onChange={changeInputValue} required />
-				</label>
+		<form className={styles.createContainer} onSubmit={submitForm}>
+			<label>
+				Name: <br />
+				<input type="text" name="name" value={createForm.value} onChange={changeInputValue} required />
+			</label>
 
-				<label>
-					Last name: <input type="text" name="lastName" value={createForm.value} onChange={changeInputValue} />
-				</label>
+			<label>
+				Last name: <br />
+				<input type="text" name="lastName" value={createForm.value} onChange={changeInputValue} />
+			</label>
 
-				<label>
-					Telephone number: <input type="text" name="tel" value={createForm.value} onChange={changeInputValue} />
-				</label>
+			<label>
+				Telephone number: <br />
+				<input type="number" name="tel" value={createForm.value} onChange={changeInputValue} />
+			</label>
 
-				<label>
-					Skype: <input type="text" name="skype" value={createForm.value} onChange={changeInputValue} />
-				</label>
+			<label>
+				Skype: <br />
+				<input type="text" name="skype" value={createForm.value} onChange={changeInputValue} />
+			</label>
 
-				<label>
-					Email: <input type="text" name="email" value={createForm.value} onChange={changeInputValue} />
-				</label>
+			<label>
+				Email: <br />
+				<input type="email" name="email" value={createForm.value} onChange={changeInputValue} />
+			</label>
 
-				<label>
-					Address: <input type="text" name="address" value={createForm.value} onChange={changeInputValue} />
-				</label>
+			<label>
+				Address: <br />
+				<input type="text" name="address" value={createForm.value} onChange={changeInputValue} />
+			</label>
 
-				<label>
-					Comment: <textarea type="text" name="comment" value={createForm.value} onChange={changeInputValue} />
-				</label>
+			<label>
+				Comment: <br />
+				<textarea type="text" name="comment" value={createForm.value} onChange={changeInputValue} />
+			</label>
 
-				<div>
-					<button type="button" onClick={closeCreator}>
-						Cancel
-					</button>
-					<button type="submit">Save</button>
-				</div>
-			</form>
-		</div>
+			<div className={styles.createButtons}>
+				<button type="button" className={styles.createCancelButton} onClick={closeCreator}>
+					Cancel
+				</button>
+				<button type="submit" className={styles.createSaveButton}>
+					Save
+				</button>
+			</div>
+		</form>
 	);
 }
