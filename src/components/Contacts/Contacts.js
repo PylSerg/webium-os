@@ -17,7 +17,7 @@ export default function Contacts() {
 	const [filter, setFilter] = useState({ value: "" });
 	const [creator, setCreator] = useState({ visible: false });
 
-	refreshLocalStorage();
+	localStorage.setItem("contacts", JSON.stringify(contacts));
 
 	useEffect(() => {
 		viewContact(contacts[0].id);
@@ -56,7 +56,8 @@ export default function Contacts() {
 		.sort((a, b) => (a.name > b.name ? 1 : -1));
 
 	useEffect(() => {
-		viewContact(visibleContacts[0].id);
+		if (visibleContacts.length > 0) viewContact(visibleContacts[0].id);
+		return;
 	}, [filter]);
 
 	function clearFilter() {
@@ -65,6 +66,8 @@ export default function Contacts() {
 
 	function openCreator() {
 		setCreator({ visible: true });
+
+		clearFilter();
 	}
 
 	function closeCreator() {
@@ -74,10 +77,6 @@ export default function Contacts() {
 	function addContact(newContact) {
 		setContacts([...contacts, newContact]);
 		viewContact(newContact.id);
-	}
-
-	function refreshLocalStorage() {
-		localStorage.setItem("contacts", JSON.stringify(contacts));
 	}
 
 	return (
