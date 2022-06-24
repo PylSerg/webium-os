@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ContactsFilter from "./ContactsFilter";
 import AddContact from "./ContactsAdd";
 import ContactsList from "./ContactsList";
@@ -16,6 +16,12 @@ export default function Contacts() {
 	const [contacts, setContacts] = useState(() => defaultContacts());
 	const [filter, setFilter] = useState({ value: "" });
 	const [creator, setCreator] = useState({ visible: false });
+
+	refreshLocalStorage();
+
+	useEffect(() => {
+		viewContact(contacts[0].id);
+	}, []);
 
 	function deleteContact(contactId) {
 		setContacts(prevContacts => prevContacts.filter(contact => contact.id !== contactId));
@@ -49,6 +55,10 @@ export default function Contacts() {
 		)
 		.sort((a, b) => (a.name > b.name ? 1 : -1));
 
+	useEffect(() => {
+		viewContact(visibleContacts[0].id);
+	}, [filter]);
+
 	function clearFilter() {
 		setFilter({ value: "" });
 	}
@@ -69,8 +79,6 @@ export default function Contacts() {
 	function refreshLocalStorage() {
 		localStorage.setItem("contacts", JSON.stringify(contacts));
 	}
-
-	refreshLocalStorage();
 
 	return (
 		<div className={styles.container}>
