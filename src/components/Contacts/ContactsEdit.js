@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Contacts.module.css";
 
-export default function EditContact({ contact, closeEditor }) {
+export default function EditContact({ contact, editContact, closeEditor }) {
 	const [editForm, setEditForm] = useState(contact);
 
 	function changeInputValue(e) {
@@ -10,10 +10,12 @@ export default function EditContact({ contact, closeEditor }) {
 
 	function submitForm(e) {
 		e.preventDefault();
+		editContact(contact.id, editForm);
+		closeEditor();
 	}
 
 	return (
-		<form className={styles.createContainer}>
+		<form className={styles.createContainer} onSubmit={submitForm}>
 			<label>
 				Name: <br />
 				<input type="text" name="name" value={editForm.name} onChange={changeInputValue} required />
@@ -21,32 +23,32 @@ export default function EditContact({ contact, closeEditor }) {
 
 			<label>
 				Last name: <br />
-				<input type="text" name="lastName" value={editForm.value} onChange={changeInputValue} />
+				<input type="text" name="lastName" value={editForm.lastName} onChange={changeInputValue} />
 			</label>
 
 			<label>
 				Telephone number: <br />
-				<input type="number" name="tel" value={editForm.value} onChange={changeInputValue} />
+				<input type="number" name="tel" value={editForm.tel} onChange={changeInputValue} />
 			</label>
 
 			<label>
 				Skype: <br />
-				<input type="text" name="skype" value={editForm.value} onChange={changeInputValue} />
+				<input type="text" name="skype" value={editForm.skype} onChange={changeInputValue} />
 			</label>
 
 			<label>
 				Email: <br />
-				<input type="email" name="email" value={editForm.value} onChange={changeInputValue} />
+				<input type="email" name="email" value={editForm.email} onChange={changeInputValue} />
 			</label>
 
 			<label>
 				Address: <br />
-				<input type="text" name="address" value={editForm.value} onChange={changeInputValue} />
+				<input type="text" name="address" value={editForm.address} onChange={changeInputValue} />
 			</label>
 
 			<label>
 				Comment: <br />
-				<textarea type="text" name="comment" value={editForm.value} onChange={changeInputValue} />
+				<textarea type="text" name="comment" value={editForm.comment} onChange={changeInputValue} />
 			</label>
 
 			<div className={styles.createButtons}>

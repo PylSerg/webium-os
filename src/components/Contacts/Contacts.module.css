@@ -8,10 +8,6 @@
     color: #333;
 }
 
-.block {
-    pointer-events: none;
-}
-
 .sidebar {
     width: 40%;
     height: 100%;
@@ -244,7 +240,7 @@
 .control {
     position: fixed;
     top: 35px;
-    right: 5px;
+    right: 20px;
 }
 
 .delete, .edit {
@@ -394,7 +390,7 @@
     align-items: center;
 
     width: 100%;
-    height: calc(100% - 30px);
+    height: calc(100% - 10px);
 
     background-color: #fff;
 
@@ -463,4 +459,9 @@
 .createSaveButton:hover,
 .createSaveButton:focus {
     background-color: #70d36c;
+}
+
+.block {
+    pointer-events: none;
+    overflow-y: hidden;
 }

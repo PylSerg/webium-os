@@ -20,6 +20,7 @@ export default function Contacts() {
 	const [modalDelete, setModalDelete] = useState({ open: false });
 
 	const containerStyles = [styles.container];
+	const viewStyles = [styles.contact];
 
 	localStorage.setItem("contacts", JSON.stringify(contacts));
 
@@ -32,11 +33,10 @@ export default function Contacts() {
 	}, []);
 
 	function blockPointerEvents(action) {
-		if (action) containerStyles.push(styles.block);
-	}
-
-	function deleteContact(contactId) {
-		setContacts(prevContacts => prevContacts.filter(contact => contact.id !== contactId));
+		if (action) {
+			containerStyles.push(styles.block);
+			viewStyles.push(styles.block);
+		}
 	}
 
 	function viewContact(contId) {
@@ -76,6 +76,24 @@ export default function Contacts() {
 		setFilter({ value: "" });
 	}
 
+	function addContact(newContact) {
+		setContacts([...contacts, newContact]);
+		viewContact(newContact.id);
+	}
+
+	function editContact(contactId, editedContact) {
+		setContacts(prevContacts => {
+			const newContactList = prevContacts.filter(contact => contact.id !== contactId);
+			newContactList.push(editedContact);
+
+			return newContactList;
+		});
+	}
+
+	function deleteContact(contactId) {
+		setContacts(prevContacts => prevContacts.filter(contact => contact.id !== contactId));
+	}
+
 	function openCreator() {
 		setCreator({ visible: true });
 
@@ -84,11 +102,6 @@ export default function Contacts() {
 
 	function closeCreator() {
 		setCreator({ visible: false });
-	}
-
-	function addContact(newContact) {
-		setContacts([...contacts, newContact]);
-		viewContact(newContact.id);
 	}
 
 	function openEditor() {
@@ -118,12 +131,14 @@ export default function Contacts() {
 			</div>
 
 			<ContactView
+				viewStyles={viewStyles}
 				contacts={contacts}
 				creator={creator}
 				editor={editor}
 				modalDelete={modalDelete}
 				blockPointerEvents={blockPointerEvents}
 				addContact={addContact}
+				editContact={editContact}
 				deleteContact={deleteContact}
 				closeCreator={closeCreator}
 				openEditor={openEditor}
