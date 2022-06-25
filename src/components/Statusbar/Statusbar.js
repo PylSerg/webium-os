@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addZero, monthCoverting, weekdayConverting } from "../Clock/DateFormating";
+import { addZero, monthCoverting, weekdayConverting } from "./DateFormating";
 import styles from "./Statusbar.module.css";
 
 export default function Statusbar() {
