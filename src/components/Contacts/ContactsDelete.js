@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Contacts.module.css";
 
-export default function DeleteContact({ contact, closeModal, deleteContact }) {
+export default function DeleteContact({ contact, closeDeleteModal, deleteContact }) {
 	function deleteAndClose(contId) {
 		deleteContact(contId);
-		closeModal();
+		closeDeleteModal();
 	}
 
 	return (
@@ -18,7 +18,7 @@ export default function DeleteContact({ contact, closeModal, deleteContact }) {
 					</b>{" "}
 					from contact list?
 				</p>
-				<button className={styles.cancelButton} type="button" onClick={closeModal}>
+				<button className={styles.cancelButton} type="button" onClick={closeDeleteModal}>
 					Cancel
 				</button>
 				<button className={styles.deleteButton} type="button" onClick={() => deleteAndClose(contact.id)}>

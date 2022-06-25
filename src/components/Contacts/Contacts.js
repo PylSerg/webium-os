@@ -89,11 +89,11 @@ export default function Contacts() {
 		viewContact(newContact.id);
 	}
 
-	function openModal() {
+	function openDeleteModal() {
 		setModalDelete({ open: true });
 	}
 
-	function closeModal() {
+	function closeDeleteModal() {
 		setModalDelete({ open: false });
 	}
 
@@ -101,9 +101,12 @@ export default function Contacts() {
 		<div className={containerStyles.join(" ")}>
 			<div className={styles.sidebar}>
 				<ContactsFilter filter={filter} filterContacts={filterContacts} clearFilter={clearFilter} />
+
 				<AddContact openCreator={openCreator} />
+
 				<ContactsList contacts={visibleContacts} filter={filter} normalizedFilter={normalizedFilter} viewContact={viewContact} filterContacts={filterContacts} />
 			</div>
+
 			<ContactView
 				contacts={contacts}
 				creator={creator}
@@ -112,8 +115,8 @@ export default function Contacts() {
 				addContact={addContact}
 				deleteContact={deleteContact}
 				closeCreator={closeCreator}
-				openModal={openModal}
-				closeModal={closeModal}
+				openDeleteModal={openDeleteModal}
+				closeDeleteModal={closeDeleteModal}
 			/>
 		</div>
 	);
