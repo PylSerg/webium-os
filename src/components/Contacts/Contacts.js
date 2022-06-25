@@ -16,12 +16,22 @@ export default function Contacts() {
 	const [contacts, setContacts] = useState(() => defaultContacts());
 	const [filter, setFilter] = useState({ value: "" });
 	const [creator, setCreator] = useState({ visible: false });
+	const [modalDelete, setModalDelete] = useState({ open: false });
+
+	const containerStyles = [styles.container];
 
 	localStorage.setItem("contacts", JSON.stringify(contacts));
+
+	blockPointerEvents(creator.visible);
+	blockPointerEvents(modalDelete.open);
 
 	useEffect(() => {
 		viewContact(contacts[0].id);
 	}, []);
+
+	function blockPointerEvents(action) {
+		if (action) containerStyles.push(styles.block);
+	}
 
 	function deleteContact(contactId) {
 		setContacts(prevContacts => prevContacts.filter(contact => contact.id !== contactId));
@@ -79,14 +89,32 @@ export default function Contacts() {
 		viewContact(newContact.id);
 	}
 
+	function openModal() {
+		setModalDelete({ open: true });
+	}
+
+	function closeModal() {
+		setModalDelete({ open: false });
+	}
+
 	return (
-		<div className={styles.container}>
+		<div className={containerStyles.join(" ")}>
 			<div className={styles.sidebar}>
 				<ContactsFilter filter={filter} filterContacts={filterContacts} clearFilter={clearFilter} />
 				<AddContact openCreator={openCreator} />
 				<ContactsList contacts={visibleContacts} filter={filter} normalizedFilter={normalizedFilter} viewContact={viewContact} filterContacts={filterContacts} />
 			</div>
-			<ContactView contacts={contacts} creator={creator} addContact={addContact} onDelete={deleteContact} closeCreator={closeCreator} />
+			<ContactView
+				contacts={contacts}
+				creator={creator}
+				modalDelete={modalDelete}
+				blockPointerEvents={blockPointerEvents}
+				addContact={addContact}
+				deleteContact={deleteContact}
+				closeCreator={closeCreator}
+				openModal={openModal}
+				closeModal={closeModal}
+			/>
 		</div>
 	);
 }

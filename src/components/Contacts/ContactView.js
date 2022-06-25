@@ -5,20 +5,10 @@ import { AiOutlineUser } from "react-icons/ai";
 import { RiPhoneFill, RiSkypeFill, RiMailFill, RiPhoneLine, RiSkypeLine, RiMailLine, RiCommunityLine, RiFileTextLine, RiEditLine, RiDeleteBinLine } from "react-icons/ri";
 import styles from "./Contacts.module.css";
 
-export default function ContactView({ contacts, creator, addContact, onDelete, closeCreator }) {
+export default function ContactView({ contacts, creator, modalDelete, openModal, closeModal, addContact, deleteContact, closeCreator }) {
 	const forTel = "tel:";
 	const forSkype = "skype:";
 	const forMail = "mailto:";
-
-	const [modalDelete, setModalDelete] = useState({ open: false });
-
-	function openModal() {
-		setModalDelete({ open: true });
-	}
-
-	function closeModal() {
-		setModalDelete({ open: false });
-	}
 
 	return (
 		<div className={styles.contact}>
@@ -109,7 +99,7 @@ export default function ContactView({ contacts, creator, addContact, onDelete, c
 								</button>
 							</div>
 
-							{modalDelete.open && <DeleteContact contact={contact} onDelete={onDelete} onClose={closeModal} />}
+							{modalDelete.open && <DeleteContact contact={contact} deleteContact={deleteContact} closeModal={closeModal} />}
 						</div>
 					)
 			)}

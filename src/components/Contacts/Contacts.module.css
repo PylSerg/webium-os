@@ -8,6 +8,10 @@
     color: #333;
 }
 
+.block {
+    pointer-events: none;
+}
+
 .sidebar {
     width: 40%;
     height: 100%;
@@ -301,6 +305,7 @@
 
     box-shadow: 0 0 10px 1px #333;
 
+    pointer-events: all;
     overflow: hidden;
 }
 
@@ -392,6 +397,8 @@
     height: calc(100% - 30px);
 
     background-color: #fff;
+
+    pointer-events: all;
 }
 
 .createContainer label {
