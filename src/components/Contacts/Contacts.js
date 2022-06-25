@@ -16,6 +16,7 @@ export default function Contacts() {
 	const [contacts, setContacts] = useState(() => defaultContacts());
 	const [filter, setFilter] = useState({ value: "" });
 	const [creator, setCreator] = useState({ visible: false });
+	const [editor, setEditor] = useState({ visible: false });
 	const [modalDelete, setModalDelete] = useState({ open: false });
 
 	const containerStyles = [styles.container];
@@ -23,6 +24,7 @@ export default function Contacts() {
 	localStorage.setItem("contacts", JSON.stringify(contacts));
 
 	blockPointerEvents(creator.visible);
+	blockPointerEvents(editor.visible);
 	blockPointerEvents(modalDelete.open);
 
 	useEffect(() => {
@@ -89,6 +91,14 @@ export default function Contacts() {
 		viewContact(newContact.id);
 	}
 
+	function openEditor() {
+		setEditor({ visible: true });
+	}
+
+	function closeEditor() {
+		setEditor({ visible: false });
+	}
+
 	function openDeleteModal() {
 		setModalDelete({ open: true });
 	}
@@ -110,11 +120,14 @@ export default function Contacts() {
 			<ContactView
 				contacts={contacts}
 				creator={creator}
+				editor={editor}
 				modalDelete={modalDelete}
 				blockPointerEvents={blockPointerEvents}
 				addContact={addContact}
 				deleteContact={deleteContact}
 				closeCreator={closeCreator}
+				openEditor={openEditor}
+				closeEditor={closeEditor}
 				openDeleteModal={openDeleteModal}
 				closeDeleteModal={closeDeleteModal}
 			/>

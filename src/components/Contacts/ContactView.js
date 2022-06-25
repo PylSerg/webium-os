@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import EditContact from "./ContactsEdit";
 import DeleteContact from "./ContactsDelete";
 import CreateContact from "./ContactsCreate";
 import { AiOutlineUser } from "react-icons/ai";
 import { RiPhoneFill, RiSkypeFill, RiMailFill, RiPhoneLine, RiSkypeLine, RiMailLine, RiCommunityLine, RiFileTextLine, RiEditLine, RiDeleteBinLine } from "react-icons/ri";
 import styles from "./Contacts.module.css";
 
-export default function ContactView({ contacts, creator, modalDelete, openDeleteModal, closeDeleteModal, addContact, deleteContact, closeCreator }) {
+export default function ContactView({ contacts, creator, editor, modalDelete, openEditor, closeEditor, openDeleteModal, closeDeleteModal, addContact, deleteContact, closeCreator }) {
 	const forTel = "tel:";
 	const forSkype = "skype:";
 	const forMail = "mailto:";
@@ -90,7 +91,7 @@ export default function ContactView({ contacts, creator, modalDelete, openDelete
 							</div>
 
 							<div className={styles.control}>
-								<button type="button" className={styles.edit} title="Edit">
+								<button type="button" className={styles.edit} onClick={() => openEditor(contact.id)} title="Edit">
 									<RiEditLine className={styles.editIcon} />
 								</button>
 
@@ -98,6 +99,8 @@ export default function ContactView({ contacts, creator, modalDelete, openDelete
 									<RiDeleteBinLine className={styles.deleteIcon} />
 								</button>
 							</div>
+
+							{editor.visible && <EditContact contact={contact} closeEditor={closeEditor} />}
 
 							{modalDelete.open && <DeleteContact contact={contact} deleteContact={deleteContact} closeDeleteModal={closeDeleteModal} />}
 						</div>
