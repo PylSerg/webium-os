@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Films() {
-	return;
+	return <div></div>;
 }
