@@ -88,6 +88,15 @@
     transform: translateX(0);
 }
 
+.songs {
+    top: 30px;
+
+    width: 99%;
+    height: 95%;
+
+    z-index: 99;
+}
+
 .hidden {
     transform: translate(-50%, 100vh) scale(0);
 
