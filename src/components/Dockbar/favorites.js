@@ -1,7 +1,8 @@
 import React from "react";
 import Contacts from "../Contacts";
 import Calendar from "../Calendar";
-import { FcContacts, FcCalendar } from "react-icons/fc";
+import Films from "../Films/Films";
+import { FcContacts, FcCalendar, FcClapperboard } from "react-icons/fc";
 import styles from "./Dockbar.module.css";
 import frameStyles from "../Frames/Frames.module.css";
 
@@ -21,6 +22,16 @@ const fav = [
 		icon: <FcCalendar className={styles.icon} />,
 		title: "Calendar",
 		component: <Calendar />,
+		open: false,
+		hidden: true,
+		classlist: [frameStyles.container, frameStyles.calendar],
+	},
+
+	{
+		id: 3,
+		icon: <FcClapperboard className={styles.icon} />,
+		title: "Films",
+		component: <Films />,
 		open: false,
 		hidden: true,
 		classlist: [frameStyles.container, frameStyles.calendar],
