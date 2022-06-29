@@ -1,6 +1,6 @@
 import { useEffect, lazy, Suspense } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import Navigation from "./Navigation/Navigation";
+import Navigation from "./Navigation";
 
 const Playlist1 = lazy(() => import("./pages/Playlist-1.js"));
 const Playlist2 = lazy(() => import("./pages/Playlist-2.js"));

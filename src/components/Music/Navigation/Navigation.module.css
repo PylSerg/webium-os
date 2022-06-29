@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0px 4px 8px 0px #ccc;
+}
+
+.link {
+    color: #333;
+    text-align: center;
+
+    width: 100%;
+
+    padding: 10px 0;
+
+    text-decoration: none;
+}
+
+.link:not(:last-child) {
+    border-right: 1px solid #ddd;
+}
+
+.link:hover, .link:focus {
+    color: #fff;
+    background-color: #517ed3;
+}
