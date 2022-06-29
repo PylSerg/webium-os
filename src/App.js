@@ -47,7 +47,9 @@ export default function App() {
 	return (
 		<div>
 			<Statusbar />
+
 			<Frames favorites={favorites} onClose={closeFrame} onMinimize={minimiseFrame} />
+
 			<Dockbar favorites={favorites} onOpen={openFrame} />
 		</div>
 	);

@@ -1,8 +1,8 @@
 import React from "react";
 import Contacts from "../Contacts";
 import Calendar from "../Calendar";
-import Songs from "../Songs";
-import { FcContacts, FcCalendar, FcClapperboard } from "react-icons/fc";
+import Music from "../Music";
+import { FcContacts, FcCalendar, FcMusic } from "react-icons/fc";
 import styles from "./Dockbar.module.css";
 import frameStyles from "../Frames/Frames.module.css";
 
@@ -29,12 +29,12 @@ const fav = [
 
 	{
 		id: 3,
-		icon: <FcClapperboard className={styles.icon} />,
-		title: "Songs",
-		component: <Songs />,
+		icon: <FcMusic className={styles.icon} />,
+		title: "Music",
+		component: <Music />,
 		open: false,
 		hidden: true,
-		classlist: [frameStyles.container, frameStyles.songs],
+		classlist: [frameStyles.container, frameStyles.music],
 	},
 ];
 
