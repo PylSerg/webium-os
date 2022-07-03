@@ -7,7 +7,6 @@ const playlistNumber = 16770;
 
 export default function Playlist1() {
 	const [songs, setSongs] = useState(null);
-	console.log("🚀 songs:", songs);
 
 	useEffect(() => {
 		const req = request(playlistNumber).then(value => setSongs(value));
