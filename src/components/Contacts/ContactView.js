@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import EditContact from "./ContactsEdit";
 import DeleteContact from "./ContactsDelete";
 import CreateContact from "./ContactsCreate";
@@ -6,24 +7,12 @@ import { AiOutlineUser } from "react-icons/ai";
 import { RiPhoneFill, RiSkypeFill, RiMailFill, RiPhoneLine, RiSkypeLine, RiMailLine, RiCommunityLine, RiFileTextLine, RiEditLine, RiDeleteBinLine } from "react-icons/ri";
 import styles from "./Contacts.module.css";
 
-export default function ContactView({
-	viewStyles,
-	contacts,
-	creator,
-	editor,
-	modalDelete,
-	openEditor,
-	closeEditor,
-	openDeleteModal,
-	closeDeleteModal,
-	addContact,
-	editContact,
-	deleteContact,
-	closeCreator,
-}) {
+export default function ContactView({ viewStyles, creator, editor, modalDelete, openEditor, closeEditor, openDeleteModal, closeDeleteModal, closeCreator }) {
 	const forTel = "tel:";
 	const forSkype = "skype:";
 	const forMail = "mailto:";
+
+	const contacts = useSelector(state => state.contacts.contacts);
 
 	return (
 		<div className={viewStyles.join(" ")}>
@@ -114,14 +103,14 @@ export default function ContactView({
 								</button>
 							</div>
 
-							{editor.visible && <EditContact contact={contact} editContact={editContact} closeEditor={closeEditor} />}
+							{editor.visible && <EditContact contact={contact} closeEditor={closeEditor} />}
 
-							{modalDelete.open && <DeleteContact contact={contact} deleteContact={deleteContact} closeDeleteModal={closeDeleteModal} />}
+							{modalDelete.open && <DeleteContact contact={contact} closeDeleteModal={closeDeleteModal} />}
 						</div>
 					)
 			)}
 
-			{creator.visible && <CreateContact addContact={addContact} closeCreator={closeCreator} />}
+			{creator.visible && <CreateContact closeCreator={closeCreator} />}
 		</div>
 	);
 }

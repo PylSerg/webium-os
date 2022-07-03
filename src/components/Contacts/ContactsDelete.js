@@ -1,9 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import * as actions from "../../redux/contacts/contacts-actions";
 import styles from "./Contacts.module.css";
 
-export default function DeleteContact({ contact, closeDeleteModal, deleteContact }) {
+export default function DeleteContact({ contact, closeDeleteModal }) {
+	const dispatch = useDispatch();
+
 	function deleteAndClose(contId) {
-		deleteContact(contId);
+		dispatch(actions.deleteContact(contId));
 		closeDeleteModal();
 	}
 

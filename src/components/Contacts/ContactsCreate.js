@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
+import { useDispatch } from "react-redux";
+import * as actions from "../../redux/contacts/contacts-actions";
 import styles from "./Contacts.module.css";
 
 const defaultForm = {
@@ -14,8 +16,10 @@ const defaultForm = {
 	view: true,
 };
 
-export default function CreateContact({ addContact, closeCreator }) {
+export default function CreateContact({ closeCreator }) {
 	const [createForm, setCreateForm] = useState(defaultForm);
+
+	const dispatch = useDispatch();
 
 	function changeInputValue(e) {
 		setCreateForm({ ...createForm, id: nanoid(), [e.currentTarget.name]: e.currentTarget.value });
@@ -24,7 +28,8 @@ export default function CreateContact({ addContact, closeCreator }) {
 	function submitForm(e) {
 		e.preventDefault();
 
-		addContact(createForm);
+		dispatch(actions.addContact(createForm));
+		dispatch(actions.viewContact(createForm.id));
 
 		closeCreator();
 	}

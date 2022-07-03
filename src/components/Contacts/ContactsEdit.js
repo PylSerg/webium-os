@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import * as actions from "../../redux/contacts/contacts-actions";
 import styles from "./Contacts.module.css";
 
-export default function EditContact({ contact, editContact, closeEditor }) {
+export default function EditContact({ contact, closeEditor }) {
 	const [editForm, setEditForm] = useState(contact);
+
+	const dispatch = useDispatch();
 
 	function changeInputValue(e) {
 		setEditForm({ ...editForm, [e.currentTarget.name]: e.currentTarget.value });
@@ -10,7 +14,8 @@ export default function EditContact({ contact, editContact, closeEditor }) {
 
 	function submitForm(e) {
 		e.preventDefault();
-		editContact(contact.id, editForm);
+
+		dispatch(actions.editContact(contact.id, editForm));
 		closeEditor();
 	}
 

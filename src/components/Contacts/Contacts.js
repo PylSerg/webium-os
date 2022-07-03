@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../../redux/contacts/contacts-actions";
 import ContactsFilter from "./ContactsFilter";
 import AddContact from "./ContactsAdd";
 import ContactsList from "./ContactsList";
 import ContactView from "./ContactView";
-import contactsDB from "./contactsDB.json";
 import styles from "./Contacts.module.css";
 
-function defaultContacts() {
-	if (!localStorage.getItem("contacts")) return contactsDB;
-
-	return JSON.parse(localStorage.getItem("contacts"));
-}
-
 export default function Contacts() {
-	const [contacts, setContacts] = useState(() => defaultContacts());
-	const [filter, setFilter] = useState({ value: "" });
+	const contacts = useSelector(state => state.contacts.contacts);
+	const dispatch = useDispatch();
+
 	const [creator, setCreator] = useState({ visible: false });
 	const [editor, setEditor] = useState({ visible: false });
 	const [modalDelete, setModalDelete] = useState({ open: false });
@@ -29,7 +25,7 @@ export default function Contacts() {
 	blockPointerEvents(modalDelete.open);
 
 	useEffect(() => {
-		viewContact(contacts[0].id);
+		dispatch(actions.viewContact(contacts[0].id));
 	}, []);
 
 	function blockPointerEvents(action) {
@@ -39,59 +35,8 @@ export default function Contacts() {
 		}
 	}
 
-	function viewContact(contId) {
-		setContacts(prevContacts =>
-			prevContacts.map(contact => {
-				if (contact.view && contact.id !== contId) return { ...contact, view: false };
-				if (contact.id === contId) return { ...contact, view: true };
-
-				return contact;
-			})
-		);
-	}
-
-	function filterContacts(e) {
-		setFilter({ value: e.currentTarget.value });
-	}
-
-	const normalizedFilter = filter.value.toLocaleLowerCase();
-	const visibleContacts = contacts
-		.filter(
-			contact =>
-				contact.name.toLocaleLowerCase().includes(normalizedFilter) ||
-				contact.lastName.toLocaleLowerCase().includes(normalizedFilter) ||
-				contact.tel.includes(normalizedFilter) ||
-				contact.skype.toLocaleLowerCase().includes(normalizedFilter) ||
-				contact.email.toLocaleLowerCase().split("@")[0].includes(normalizedFilter) ||
-				contact.address.toLocaleLowerCase().includes(normalizedFilter)
-		)
-		.sort((a, b) => (a.name > b.name ? 1 : -1));
-
-	useEffect(() => {
-		if (visibleContacts.length > 0) viewContact(visibleContacts[0].id);
-		return;
-	}, [filter]);
-
 	function clearFilter() {
-		setFilter({ value: "" });
-	}
-
-	function addContact(newContact) {
-		setContacts([...contacts, newContact]);
-		viewContact(newContact.id);
-	}
-
-	function editContact(contactId, editedContact) {
-		setContacts(prevContacts => {
-			const newContactList = prevContacts.filter(contact => contact.id !== contactId);
-			newContactList.push(editedContact);
-
-			return newContactList;
-		});
-	}
-
-	function deleteContact(contactId) {
-		setContacts(prevContacts => prevContacts.filter(contact => contact.id !== contactId));
+		dispatch(actions.filterContacts(""));
 	}
 
 	function openCreator() {
@@ -123,23 +68,19 @@ export default function Contacts() {
 	return (
 		<div className={containerStyles.join(" ")}>
 			<div className={styles.sidebar}>
-				<ContactsFilter filter={filter} filterContacts={filterContacts} clearFilter={clearFilter} />
+				<ContactsFilter clearFilter={clearFilter} />
 
 				<AddContact openCreator={openCreator} />
 
-				<ContactsList contacts={visibleContacts} filter={filter} normalizedFilter={normalizedFilter} viewContact={viewContact} filterContacts={filterContacts} />
+				<ContactsList />
 			</div>
 
 			<ContactView
 				viewStyles={viewStyles}
-				contacts={contacts}
 				creator={creator}
 				editor={editor}
 				modalDelete={modalDelete}
 				blockPointerEvents={blockPointerEvents}
-				addContact={addContact}
-				editContact={editContact}
-				deleteContact={deleteContact}
 				closeCreator={closeCreator}
 				openEditor={openEditor}
 				closeEditor={closeEditor}
