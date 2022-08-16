@@ -48,7 +48,7 @@ export default function CreateContact({ closeCreator }) {
 
 			<label>
 				Telephone number: <br />
-				<input type="number" name="tel" value={createForm.tel} onChange={changeInputValue} />
+				<input type="tel" name="tel" value={createForm.tel} onChange={changeInputValue} />
 			</label>
 
 			<label>
