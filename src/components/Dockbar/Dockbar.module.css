@@ -1,97 +1,117 @@
 :root {
-    --transition-bg: background-color 150ms linear;
-    --transition-title: opacity 150ms linear;
+	--transition-bg: background-color 150ms linear;
+	--transition-title: opacity 150ms linear;
 }
 
 .container {
-    position: fixed;
-    left: 50%;
-    bottom: 10px;
-    transform: translateX(-50%);
+	position: fixed;
+	left: 50%;
+	bottom: 10px;
+	transform: translateX(-50%);
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 
-    padding: 5px 10px;
-    margin: 0;
-    list-style: none;
+	padding: 5px 10px;
+	margin: 0;
+	list-style: none;
 
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 20px;
-    border: 1px solid #333;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius: 20px;
+	border: 1px solid #333;
+
+	z-index: -999;
+}
+
+.caller {
+	position: fixed;
+	left: 50%;
+	bottom: 0px;
+	transform: translateX(-50%);
+
+	width: 300px;
+	height: 10px;
+
+	z-index: 999;
+}
+
+.container:hover,
+.caller:hover + .container {
+	z-index: 999;
 }
 
 .item {
-    position: relative;
+	position: relative;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
-    padding: 5px;
-    margin: 0;
+	padding: 5px;
+	margin: 0;
 
-    border-radius: 15px;
+	border-radius: 15px;
 
-    transition: var(--transition-bg);
+	transition: var(--transition-bg);
 
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .item:not(:last-child) {
-    margin-right: 10px;
+	margin-right: 10px;
 }
 
-.item:hover, .item:focus {
-    background-color: rgba(100, 100, 100, 0.3);
+.item:hover,
+.item:focus {
+	background-color: rgba(100, 100, 100, 0.3);
 
-    transition: var(--transition-bg);
+	transition: var(--transition-bg);
 }
 
 .title {
-    position: absolute;
-    left: 50%;
-    top: -37px;
-    transform: translateX(-50%);
+	position: absolute;
+	left: 50%;
+	top: -37px;
+	transform: translateX(-50%);
 
-    display: inline-flex;
+	display: inline-flex;
 
-    opacity: 0;
-    transition: var(--transition-title);
+	opacity: 0;
+	transition: var(--transition-title);
 
-    padding: 5px 10px;
-    margin: 0;
+	padding: 5px 10px;
+	margin: 0;
 
-    background-color: rgba(0,0,0,0.8);
-    border-radius: 25px;
-    border: 1px solid #333;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-radius: 25px;
+	border: 1px solid #333;
 }
 
 .item:hover .title {
-    opacity: 1;
+	opacity: 1;
 
-    transition: var(--transition-title);
+	transition: var(--transition-title);
 }
 
 .icon {
-    width: 60px;
-    height: 60px;
+	width: 60px;
+	height: 60px;
 
-    padding: 0;
-    margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
 .active {
-    position: absolute;
-    bottom: 2px;
+	position: absolute;
+	bottom: 2px;
 
-    width: 6px;
-    height: 6px;
+	width: 6px;
+	height: 6px;
 
-    background-color: rgb(255, 102, 0);
+	background-color: rgb(255, 102, 0);
 
-    border-radius: 50px;
+	border-radius: 50px;
 }

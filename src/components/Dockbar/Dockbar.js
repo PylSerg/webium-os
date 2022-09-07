@@ -4,6 +4,8 @@ import styles from "./Dockbar.module.css";
 export default function Dockbar({ favorites, onOpen }) {
 	return (
 		<div>
+			<div className={styles.caller}></div>
+
 			<ul className={styles.container}>
 				{favorites.map(f => (
 					<li className={styles.item} key={f.id} onClick={() => onOpen(f.id)}>
