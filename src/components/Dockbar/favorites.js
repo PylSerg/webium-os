@@ -14,6 +14,8 @@ const fav = [
 		component: <Contacts />,
 		open: false,
 		hidden: true,
+		opened: 0,
+		index: 0,
 		classlist: [frameStyles.container, frameStyles.contacts],
 	},
 
@@ -24,6 +26,8 @@ const fav = [
 		component: <Calendar />,
 		open: false,
 		hidden: true,
+		opened: 0,
+		index: 0,
 		classlist: [frameStyles.container, frameStyles.calendar],
 	},
 
@@ -34,6 +38,8 @@ const fav = [
 		component: <Music />,
 		open: false,
 		hidden: true,
+		opened: 0,
+		index: 0,
 		classlist: [frameStyles.container, frameStyles.music],
 	},
 ];
