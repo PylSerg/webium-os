@@ -22,7 +22,7 @@
 	border-radius: 20px;
 	border: 1px solid #333;
 
-	z-index: -999;
+	z-index: -1;
 }
 
 .caller {
@@ -34,12 +34,12 @@
 	width: 300px;
 	height: 10px;
 
-	z-index: 999;
+	z-index: 99999;
 }
 
 .container:hover,
 .caller:hover+.container {
-	z-index: 999;
+	z-index: 99999;
 }
 
 .item {

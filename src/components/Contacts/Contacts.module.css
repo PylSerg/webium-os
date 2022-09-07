@@ -35,7 +35,8 @@
     border-bottom: 1px solid #ddd;
 }
 
-.item:hover, .item:focus {
+.item:hover,
+.item:focus {
     color: #fff;
     background-color: #48709e;
 }
@@ -84,7 +85,7 @@
     cursor: pointer;
 }
 
-.searchClear:hover, 
+.searchClear:hover,
 .searchClear:focus {
     fill: #2b85ec;
 }
@@ -180,7 +181,7 @@
     text-decoration: none;
 }
 
-.connectionElement:hover, 
+.connectionElement:hover,
 .connectionElement:focus {
     color: #2b85ec;
 }
@@ -243,7 +244,8 @@
     right: 20px;
 }
 
-.delete, .edit {
+.delete,
+.edit {
     width: 32px;
     height: 32px;
 
@@ -259,7 +261,8 @@
     cursor: pointer;
 }
 
-.deleteIcon, .editIcon {
+.deleteIcon,
+.editIcon {
     fill: #2b85ec;
 
     width: 100%;
@@ -271,7 +274,8 @@
     background-color: #1aa31a;
 }
 
-.delete:hover, .delete:focus {
+.delete:hover,
+.delete:focus {
     background-color: #ec2b2b;
 }
 
@@ -328,7 +332,8 @@
     padding: 20px;
 }
 
-.cancelButton, .deleteButton {
+.cancelButton,
+.deleteButton {
     font-size: 16px;
 
     width: 50%;
@@ -344,7 +349,8 @@
     background-color: #ecebeb;
 }
 
-.cancelButton:hover, .cancelButton:focus {
+.cancelButton:hover,
+.cancelButton:focus {
     background-color: #cacaca;
 }
 
@@ -375,7 +381,8 @@
     cursor: pointer;
 }
 
-.addbutton:hover, .addbutton:focus {
+.addbutton:hover,
+.addbutton:focus {
     color: #2b85ec;
 }
 
@@ -404,7 +411,8 @@
     width: 80%;
 }
 
-.createContainer input, textarea {
+.createContainer input,
+textarea {
     color: #444;
     font-size: 16px;
 
@@ -427,7 +435,8 @@
     width: 80%;
 }
 
-.createCancelButton, .createSaveButton {
+.createCancelButton,
+.createSaveButton {
     color: #fff;
     font-size: 16px;
 
@@ -447,7 +456,7 @@
     background-color: #e21313;
 }
 
-.createCancelButton:hover, 
+.createCancelButton:hover,
 .createCancelButton:focus {
     background-color: #eb4c4c;
 }

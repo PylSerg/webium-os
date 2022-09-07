@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { fav } from "./components/Dockbar/favorites";
 import Statusbar from "./components/Statusbar";
 import Frames from "./components/Frames";
@@ -9,13 +9,23 @@ export default function App() {
 	const [favorites, setFavorites] = useState(fav);
 	const [rate, setRate] = useState(0);
 
-	console.log("z-index => ", rate);
-	console.table(favorites);
+	useEffect(() => {
+		let actualIndex = 0;
+		const indexArray = [];
+
+		favorites.map(f => indexArray.push(f.index));
+
+		indexArray.sort((a, b) => b - a);
+
+		actualIndex = indexArray[0];
+
+		setRate(actualIndex);
+	}, [favorites]);
 
 	function openFrame(favId) {
 		setFavorites(prevFavorites =>
 			prevFavorites.map(favorit => {
-				if (favorit.id === favId && !favorit.hidden && favorit.index === rate) return { ...favorit, hidden: true, classlist: [...favorit.classlist, frameStyles.hidden] };
+				if (favorit.id === favId && !favorit.hidden && favorit.index === rate) return { ...favorit, hidden: true, index: 0, classlist: [...favorit.classlist, frameStyles.hidden] };
 
 				if (favorit.id === favId && !favorit.hidden) {
 					setRate(prevRate => prevRate + 1);
@@ -39,7 +49,7 @@ export default function App() {
 	function closeFrame(favId) {
 		setFavorites(prevFavorites =>
 			prevFavorites.map(favorit => {
-				if (favorit.id === favId) return { ...favorit, open: false, opened: 0, hidden: true };
+				if (favorit.id === favId) return { ...favorit, open: false, opened: false, hidden: true, index: 0 };
 				return favorit;
 			})
 		);
@@ -48,18 +58,18 @@ export default function App() {
 	function minimiseFrame(favId) {
 		setFavorites(prevFavorites =>
 			prevFavorites.map(favorit => {
-				if (favorit.id === favId) return { ...favorit, hidden: true, classlist: [...favorit.classlist, frameStyles.hidden] };
+				if (favorit.id === favId) return { ...favorit, hidden: true, index: 0, classlist: [...favorit.classlist, frameStyles.hidden] };
 				return favorit;
 			})
 		);
 	}
 
-	function changeOpened(favId, fc) {
+	function changeOpened(favId) {
 		setRate(prevRate => prevRate + 1);
 
 		setFavorites(prevFavorites =>
 			prevFavorites.map(favorit => {
-				if (favorit.id === favId) return { ...favorit, open: true, opened: fc + 1, index: rate + 1 };
+				if (favorit.id === favId) return { ...favorit, open: true, opened: true, index: rate + 1 };
 				return favorit;
 			})
 		);
@@ -69,7 +79,7 @@ export default function App() {
 		<div>
 			<Statusbar />
 
-			<Frames favorites={favorites} rate={rate} changeOpened={changeOpened} setRate={setRate} onClose={closeFrame} onMinimize={minimiseFrame} />
+			<Frames favorites={favorites} changeOpened={changeOpened} onOpen={openFrame} onClose={closeFrame} onMinimize={minimiseFrame} />
 
 			<Dockbar favorites={favorites} onOpen={openFrame} />
 		</div>
