@@ -1,104 +1,108 @@
 .container {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%) scale(1);
+	position: fixed;
+	left: 50%;
+	transform: translateX(-50%) scale(1);
 
-    transition: all 250ms linear;
+	transition: all 250ms linear;
 
-    display: block;
+	display: block;
 
-    padding: 0;
-    margin: 0;
+	padding: 0;
+	margin: 0;
 
-    background-color: #fff;
-    border: 2px solid #555;
-    border-radius: 10px;
+	background-color: #fff;
+	border: 2px solid #555;
+	border-radius: 10px;
 
-    box-shadow: 0 0 10px 1px #333;
+	box-shadow: 0 0 10px 1px #333;
 
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 
-    height: 30px;
+	height: 30px;
 
-    padding: 0;
-    margin: 0;
+	padding: 0;
+	margin: 0;
 
-    color: #ddd;
-    font-weight: 700;
+	color: #ddd;
+	font-weight: 700;
 
-    background-color: #555;    
+	background-color: #555;
 }
 
-.close, .minimise {
-    font-size: 15px;
-    font-weight: 700;
-    color: transparent;
+.close,
+.minimise {
+	font-size: 15px;
+	font-weight: 700;
+	color: transparent;
 
-    width: 16px;
-    height: 16px;
+	width: 16px;
+	height: 16px;
 
-    padding: 0;
-    margin: 0;
-    margin-left: 8px;
+	padding: 0;
+	margin: 0;
+	margin-left: 8px;
 
-    border: none;
-    border-radius: 50px;
+	border: none;
+	border-radius: 50px;
 
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .close {
-    background-color: rgb(255, 72, 72);
+	background-color: #ff4848;
 }
 
 .minimise {
-    background-color: rgb(255, 182, 24);
+	background-color: #ffb618;
 }
 
-.close:hover, .close:focus, .minimise:hover, .minimise:focus {
-    color: #444;
+.close:hover,
+.close:focus,
+.minimise:hover,
+.minimise:focus {
+	color: #444;
 }
 
 .title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
 
-    display: block;
+	display: block;
 }
 
 .contacts {
-    top: 40px;
+	top: 40px;
 
-    width: 600px;
-    max-width: 90%;
-    height: 80%;
+	width: 600px;
+	max-width: 90%;
+	height: 80%;
 }
 
 .calendar {
-    right: 10px;
-    top: 30px;
-    left: auto;
-    transform: translateX(0);
+	right: 10px;
+	top: 30px;
+	left: auto;
+	transform: translateX(0);
 }
 
 .music {
-    top: 30px;
+	top: 30px;
 
-    width: 99%;
-    height: 95%;
+	width: 99%;
+	height: 95%;
 
-    z-index: 99;
+	z-index: 99;
 }
 
 .hidden {
-    transform: translate(-50%, 100vh) scale(0);
+	transform: translate(-50%, 100vh) scale(0);
 
-    transition: all 250ms linear;
+	transition: all 250ms linear;
 }
