@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import frameStyles from "./Frames.module.css";
 
 export default function Frames({ favorites, onClose, onMinimize }) {
