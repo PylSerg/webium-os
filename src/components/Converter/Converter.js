@@ -7,6 +7,11 @@ function Converter() {
 	const [currencyRight, setCurrencyRight] = useState({ value: "", currency: "UAH", focus: false });
 	const [timeUpdate, setTimeUpdate] = useState();
 
+	useEffect(() => {
+		updateQuotes();
+		refreshTimeUpdate();
+	}, []);
+
 	setInterval(() => {
 		updateQuotes();
 		refreshTimeUpdate();
