@@ -2,7 +2,8 @@ import React from "react";
 import Contacts from "../Contacts";
 import Calendar from "../Calendar";
 import Music from "../Music";
-import { FcContacts, FcCalendar, FcMusic } from "react-icons/fc";
+import Converter from "../Converter/Converter";
+import { FcContacts, FcCalendar, FcMusic, FcCurrencyExchange } from "react-icons/fc";
 import styles from "./Dockbar.module.css";
 import frameStyles from "../Frames/Frames.module.css";
 
@@ -41,6 +42,18 @@ const fav = [
 		opened: false,
 		index: 0,
 		classlist: [frameStyles.container, frameStyles.music],
+	},
+
+	{
+		id: 4,
+		icon: <FcCurrencyExchange className={styles.icon} />,
+		title: "Converter",
+		component: <Converter />,
+		open: false,
+		hidden: true,
+		opened: false,
+		index: 0,
+		classlist: [frameStyles.container, frameStyles.converter],
 	},
 ];
 

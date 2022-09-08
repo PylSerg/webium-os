@@ -119,6 +119,11 @@
 	z-index: 99;
 }
 
+.converter {
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
 .hidden {
 	transform: translate(-50%, 100vh) scale(0);
 
