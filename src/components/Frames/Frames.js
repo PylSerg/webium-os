@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import frameStyles from "./Frames.module.css";
 
-export default function Frames({ favorites, changeOpened, onOpen, onClose, onMinimize }) {
+export default function Frames({ favorites, changeOpened, onClose, onMinimize }) {
 	useEffect(() => {
 		favorites.map(f => {
 			if (f.open && !f.opened) {
@@ -29,7 +29,6 @@ export default function Frames({ favorites, changeOpened, onOpen, onClose, onMin
 								</button>
 							</div>
 							{f.component}
-							{/* <div onClick={() => changeOpened(f.id)}>{f.component}</div> */}
 						</div>
 					)
 			)}

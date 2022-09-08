@@ -38,6 +38,8 @@
 
 .close,
 .minimise {
+	position: absolute;
+
 	font-size: 15px;
 	font-weight: 700;
 	color: transparent;
@@ -55,14 +57,14 @@
 }
 
 .close {
-	position: absolute;
+
 	left: 10px;
 
 	background-color: #ff4848;
 }
 
 .minimise {
-	position: absolute;
+
 	left: 34px;
 
 	background-color: #ffb618;
