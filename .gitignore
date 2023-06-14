@@ -123,4 +123,4 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
-netlyfy.toml
+netlify.toml
