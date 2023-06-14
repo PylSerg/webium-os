@@ -4,8 +4,8 @@ import Calendar from "../Calendar";
 import Music from "../Music";
 import Converter from "../Converter/Converter";
 import { FcContacts, FcCalendar, FcMusic, FcCurrencyExchange } from "react-icons/fc";
-import styles from "./Dockbar.module.css";
-import frameStyles from "../Frames/Frames.module.css";
+import styles from "./Dockbar.module.scss";
+import frameStyles from "../Frames/Frames.module.scss";
 
 const fav = [
 	{

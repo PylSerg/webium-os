@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import frameStyles from "./Frames.module.css";
+import frameStyles from "./Frames.module.scss";
 
 export default function Frames({ favorites, changeOpened, onClose, onMinimize }) {
 	useEffect(() => {
-		favorites.map(f => {
+		favorites.map((f) => {
 			if (f.open && !f.opened) {
 				changeOpened(f.id);
 			}
@@ -13,7 +13,7 @@ export default function Frames({ favorites, changeOpened, onClose, onMinimize })
 	return (
 		<div>
 			{favorites.map(
-				f =>
+				(f) =>
 					f.open && (
 						<div className={f.classlist.join(" ")} style={{ zIndex: f.index }} key={f.id}>
 							<div className={frameStyles.header}>
@@ -21,16 +21,16 @@ export default function Frames({ favorites, changeOpened, onClose, onMinimize })
 									{f.title}
 								</p>
 
-								<button type="button" className={frameStyles.close} onClick={() => onClose(f.id)} title="Close">
+								<button type='button' className={frameStyles.close} onClick={() => onClose(f.id)} title='Close'>
 									&times;
 								</button>
-								<button type="button" className={frameStyles.minimise} onClick={() => onMinimize(f.id)} title="Minimise">
+								<button type='button' className={frameStyles.minimise} onClick={() => onMinimize(f.id)} title='Minimise'>
 									&ndash;
 								</button>
 							</div>
 							{f.component}
 						</div>
-					)
+					),
 			)}
 		</div>
 	);

@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import * as actions from "../../redux/contacts/contacts-actions";
-import styles from "./Contacts.module.css";
+import styles from "./Contacts.module.scss";
 
 export default function DeleteContact({ contact, closeDeleteModal }) {
 	const dispatch = useDispatch();
@@ -22,10 +22,10 @@ export default function DeleteContact({ contact, closeDeleteModal }) {
 					</b>{" "}
 					from contact list?
 				</p>
-				<button className={styles.cancelButton} type="button" onClick={closeDeleteModal}>
+				<button className={styles.cancelButton} type='button' onClick={closeDeleteModal}>
 					Cancel
 				</button>
-				<button className={styles.deleteButton} type="button" onClick={() => deleteAndClose(contact.id)}>
+				<button className={styles.deleteButton} type='button' onClick={() => deleteAndClose(contact.id)}>
 					Delete
 				</button>
 			</div>

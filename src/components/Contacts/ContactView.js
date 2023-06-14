@@ -5,19 +5,19 @@ import DeleteContact from "./ContactsDelete";
 import CreateContact from "./ContactsCreate";
 import { AiOutlineUser } from "react-icons/ai";
 import { RiPhoneFill, RiSkypeFill, RiMailFill, RiPhoneLine, RiSkypeLine, RiMailLine, RiCommunityLine, RiFileTextLine, RiEditLine, RiDeleteBinLine } from "react-icons/ri";
-import styles from "./Contacts.module.css";
+import styles from "./Contacts.module.scss";
 
 export default function ContactView({ viewStyles, creator, editor, modalDelete, openEditor, closeEditor, openDeleteModal, closeDeleteModal, closeCreator }) {
 	const forTel = "tel:";
 	const forSkype = "skype:";
 	const forMail = "mailto:";
 
-	const contacts = useSelector(state => state.contacts.contacts);
+	const contacts = useSelector((state) => state.contacts.contacts);
 
 	return (
 		<div className={viewStyles.join(" ")}>
 			{contacts.map(
-				contact =>
+				(contact) =>
 					contact.view && (
 						<div key={contact.id}>
 							<div className={styles.iconUserBox}>
@@ -94,11 +94,11 @@ export default function ContactView({ viewStyles, creator, editor, modalDelete, 
 							</div>
 
 							<div className={styles.control}>
-								<button type="button" className={styles.edit} onClick={() => openEditor(contact.id)} title="Edit">
+								<button type='button' className={styles.edit} onClick={() => openEditor(contact.id)} title='Edit'>
 									<RiEditLine className={styles.editIcon} />
 								</button>
 
-								<button type="button" className={styles.delete} onClick={() => openDeleteModal(contact.id)} title="Delete">
+								<button type='button' className={styles.delete} onClick={() => openDeleteModal(contact.id)} title='Delete'>
 									<RiDeleteBinLine className={styles.deleteIcon} />
 								</button>
 							</div>
@@ -107,7 +107,7 @@ export default function ContactView({ viewStyles, creator, editor, modalDelete, 
 
 							{modalDelete.open && <DeleteContact contact={contact} closeDeleteModal={closeDeleteModal} />}
 						</div>
-					)
+					),
 			)}
 
 			{creator.visible && <CreateContact closeCreator={closeCreator} />}

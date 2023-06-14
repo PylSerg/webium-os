@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Dockbar.module.css";
+import styles from "./Dockbar.module.scss";
 
 export default function Dockbar({ favorites, onOpen }) {
 	return (
@@ -7,7 +7,7 @@ export default function Dockbar({ favorites, onOpen }) {
 			<div className={styles.caller}></div>
 
 			<ul className={styles.container}>
-				{favorites.map(f => (
+				{favorites.map((f) => (
 					<li className={styles.item} key={f.id} onClick={() => onOpen(f.id)}>
 						<p className={styles.title}>{f.title}</p>
 						{f.icon}

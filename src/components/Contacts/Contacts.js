@@ -5,10 +5,10 @@ import ContactsFilter from "./ContactsFilter";
 import AddContact from "./ContactsAdd";
 import ContactsList from "./ContactsList";
 import ContactView from "./ContactView";
-import styles from "./Contacts.module.css";
+import styles from "./Contacts.module.scss";
 
 export default function Contacts() {
-	const contacts = useSelector(state => state.contacts.contacts);
+	const contacts = useSelector((state) => state.contacts.contacts);
 	const dispatch = useDispatch();
 
 	const [creator, setCreator] = useState({ visible: false });

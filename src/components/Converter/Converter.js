@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { USD, EUR, updateQuotes } from "./quotes";
-import styles from "./Converter.module.css";
+import styles from "./Converter.module.scss";
 
 function Converter() {
 	const [currencyLeft, setCurrencyLeft] = useState({ value: "", currency: "USD", focus: true });
@@ -124,7 +124,7 @@ function Converter() {
 	function refreshTimeUpdate() {
 		let date = new Date();
 
-		const minutes = mnts => {
+		const minutes = (mnts) => {
 			if (mnts < 10) {
 				return "0" + mnts;
 			}
@@ -137,11 +137,11 @@ function Converter() {
 
 	return (
 		<div className={styles.container}>
-			<input className={styles.inputs} type="number" value={currencyLeft.value} onChange={changeLeftValue} />
+			<input className={styles.inputs} type='number' value={currencyLeft.value} onChange={changeLeftValue} />
 			<select className={styles.selects} value={currencyLeft.currency} onChange={changeLeftCurrency}>
-				<option value="UAH">UAH</option>
-				<option value="USD">USD</option>
-				<option value="EUR">EUR</option>
+				<option value='UAH'>UAH</option>
+				<option value='USD'>USD</option>
+				<option value='EUR'>EUR</option>
 			</select>
 
 			{(currencyLeft.focus || (!currencyLeft.focus && !currencyRight.focus)) && (
@@ -155,14 +155,14 @@ function Converter() {
 				</span>
 			)}
 
-			<input className={styles.inputs} type="number" value={currencyRight.value} onChange={changeRightValue} />
+			<input className={styles.inputs} type='number' value={currencyRight.value} onChange={changeRightValue} />
 			<select className={styles.selects} value={currencyRight.currency} onChange={changeRightCurrency}>
-				<option value="UAH">UAH</option>
-				<option value="USD">USD</option>
-				<option value="EUR">EUR</option>
+				<option value='UAH'>UAH</option>
+				<option value='USD'>USD</option>
+				<option value='EUR'>EUR</option>
 			</select>
 
-			<div className={styles.lastUpdate} title="Last update">
+			<div className={styles.lastUpdate} title='Last update'>
 				&#8635; {timeUpdate}
 			</div>
 		</div>

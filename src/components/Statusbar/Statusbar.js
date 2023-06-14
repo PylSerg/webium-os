@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { addZero, monthCoverting, weekdayConverting } from "./DateFormating";
-import styles from "./Statusbar.module.css";
+import styles from "./Statusbar.module.scss";
 
 export default function Statusbar() {
 	const [clock, setClock] = useState("Loading...");

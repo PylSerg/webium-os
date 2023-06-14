@@ -1,23 +1,23 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../redux/contacts/contacts-actions";
-import styles from "./Contacts.module.css";
+import styles from "./Contacts.module.scss";
 
 export default function ContactsList() {
-	const contacts = useSelector(state => state.contacts.contacts);
-	const filter = useSelector(state => state.contacts.filter);
+	const contacts = useSelector((state) => state.contacts.contacts);
+	const filter = useSelector((state) => state.contacts.filter);
 	const dispatch = useDispatch();
 
 	const normalizedFilter = filter.toLocaleLowerCase();
 	const visibleContacts = contacts
 		.filter(
-			contact =>
+			(contact) =>
 				contact.name.toLocaleLowerCase().includes(normalizedFilter) ||
 				contact.lastName.toLocaleLowerCase().includes(normalizedFilter) ||
 				contact.tel.includes(normalizedFilter) ||
 				contact.skype.toLocaleLowerCase().includes(normalizedFilter) ||
 				contact.email.toLocaleLowerCase().split("@")[0].includes(normalizedFilter) ||
-				contact.address.toLocaleLowerCase().includes(normalizedFilter)
+				contact.address.toLocaleLowerCase().includes(normalizedFilter),
 		)
 		.sort((a, b) => (a.name > b.name ? 1 : -1));
 
@@ -28,7 +28,7 @@ export default function ContactsList() {
 
 	return (
 		<ul className={styles.list}>
-			{visibleContacts.map(contact => (
+			{visibleContacts.map((contact) => (
 				<li key={contact.id}>
 					{contact.view ? (
 						<div className={[styles.item, styles.active].join(" ")} onClick={() => dispatch(actions.viewContact(contact.id))}>
